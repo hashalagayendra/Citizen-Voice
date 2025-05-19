@@ -1,9 +1,9 @@
 "use client";
 
 import { Progress } from "@/components/ui/progress";
-import Title_form from "@/components/Title_form";
+import Title_form from "@/components/forms/Title_form";
 import useGlobalStore from "@/store/useGlobalStore";
-import DataFillingForm from "@/components/ui/DataFillingForm";
+import DataFillingForm from "@/components/forms/DataFillingForm";
 
 function page() {
   const { pageCount, setpageCount } = useGlobalStore();
@@ -25,10 +25,10 @@ function page() {
     <div>
       <div className="w-10/12 bg-white self-center  rounded-2xl mx-auto my-20">
         <div className=" bg-[#01356A] py-10 px-12 w-full rounded-t-2xl  ">
-          <h1 className=" text-white text-3xl font-semibold pb-2">
+          <h1 className=" text-white text-2xl font-semibold pb-2">
             Environmental Hazard Complaint Form
           </h1>
-          <h1 className="text-gray-400">
+          <h1 className="text-gray-400 text-md">
             Report environmental issues to help us create a cleaner, safer
             environment
           </h1>

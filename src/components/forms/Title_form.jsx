@@ -10,7 +10,7 @@ function Title_form() {
   return (
     <div>
       <div className="bg-white w-full px-12 rounded-b-2xl py-6">
-        <h1 className="text-2xl text-[#01356A] mb-4 font-semibold">
+        <h1 className="text-xl  text-[#01356A] mb-2 font-bold">
           What type of issue would you like to report?
         </h1>
         <h1 className="text-gray-400">
@@ -18,7 +18,7 @@ function Title_form() {
           to report.
         </h1>
 
-        <div className="grid grid-cols-4 gap-9 mt-14">
+        <div className="grid grid-cols-4 gap-9 mt-10">
           <TitleComponet />
           <TitleComponet />
           <TitleComponet />
