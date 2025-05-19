@@ -26,6 +26,8 @@ function MapSelection() {
   const { selected_Location_details, setselected_Location_details } =
     useGlobalStore();
 
+  const { tempory_address, settempory_address } = useGlobalStore();
+
   useEffect(() => {
     console.log(selected_Location_details);
   }, []);
@@ -34,6 +36,7 @@ function MapSelection() {
       <h1 className="font-bold text-gray-600  ">Location</h1>
       <div className="flex  w-full justify-between   md:w-5/6 ">
         <input
+          value={tempory_address}
           type="text"
           className=" w-full h-10  rounded ring-1 ring-[#002B5A]/20 focus:ring-1 focus:outline-none focus:ring-[#002B5A]/40 px-3 self-center  "
         />
@@ -41,7 +44,7 @@ function MapSelection() {
         <div
           className="bg-[#01356A] gap-4  flex w-52 items-center justify-center rounded"
           onClick={() => {
-            setOpen(true);
+            setOpen((pre) => !pre);
           }}
         >
           <MapPinned className="text-white"></MapPinned>{" "}
@@ -76,7 +79,7 @@ function MapSelection() {
             <div className="flex-2/4 flex flex-col  items-center  bg-transparent">
               <div className=" rounded-lg h-2xl w-full">
                 {selected_Location_details ? (
-                  <LocationDetails />
+                  <LocationDetails setOpen={setOpen} />
                 ) : (
                   <div className="h-full flex flex-col items-center justify-center p-8 text-center  ">
                     <Navigation className="h-16 w-16 text-blue-300 mb-4 animate-pulse" />

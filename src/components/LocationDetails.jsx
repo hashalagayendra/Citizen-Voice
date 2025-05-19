@@ -2,9 +2,23 @@ import React, { useEffect } from "react";
 import { House, Building2, Map, Globe, Navigation } from "lucide-react";
 import useGlobalStore from "@/store/useGlobalStore";
 
-function LocationDetails() {
+function LocationDetails({ setOpen }) {
+  function addressmaker(display_name) {
+    // Step 1: Split into array
+    const parts = display_name.split(", ");
+
+    // Step 2: Remove last 3 items
+    const trimmedParts = parts.slice(0, -3);
+
+    // Step 3: Join back to string
+    const newDisplayName = trimmedParts.join(", ");
+
+    return newDisplayName;
+  }
+
   const { selected_Location_details, setselected_Location_details } =
     useGlobalStore();
+  const { tempory_address, settempory_address } = useGlobalStore();
 
   useEffect(() => {
     console.log(selected_Location_details);
@@ -20,7 +34,9 @@ function LocationDetails() {
           </div>
 
           <h1 className="ml-10 text-sm font-bold">
-            {selected_Location_details?.display_name}
+            {addressmaker(selected_Location_details?.display_name)}
+
+            {}
           </h1>
         </div>
 
@@ -29,10 +45,14 @@ function LocationDetails() {
             <div className="flex gap-4">
               {" "}
               <Building2 className="text-blue-500"></Building2>
-              <h1 className="text-sm">Village</h1>
+              <h1 className="text-sm">Aria</h1>
             </div>
 
-            <h1 className="ml-10 text-sm">Pipe Lane, Housing Scheme</h1>
+            <h1 className="ml-10 text-sm">
+              {selected_Location_details?.address?.village ||
+                selected_Location_details?.address?.town ||
+                selected_Location_details?.address?.city}
+            </h1>
           </div>
 
           <div className="detail_container bg-blue-200/30 p-3 rounded-md flex-1">
@@ -75,11 +95,23 @@ function LocationDetails() {
         </div>
 
         <div className="flex  justify-around gap-2">
-          <h1 className="px-5 flex-1 text-sm py-3 text-center bg-[#01356A] rounded text-white font-semibold ">
+          <h1
+            className="px-5 flex-1 text-sm py-3 text-center bg-[#01356A] rounded text-white font-semibold "
+            onClick={() => {
+              settempory_address(selected_Location_details?.display_name);
+              setOpen(false);
+            }}
+          >
             Confirm Location
           </h1>
 
-          <h1 className="text-sm flex-1 px-5 py-3 text-center  rounded bg-white ring-2 ring-[#01356A] text-[#01356A] font-semibold">
+          <h1
+            onClick={() => {
+              setOpen(false);
+              settempory_address("");
+            }}
+            className="text-sm flex-1 px-5 py-3 text-center  rounded bg-white ring-2 ring-[#01356A] text-[#01356A] font-semibold"
+          >
             Cancel
           </h1>
         </div>

@@ -4,7 +4,7 @@ import logo from "@/assests/logo.png";
 
 export default function layout({ children }) {
   return (
-    <div className="w-dvw h-full bg-[#002B5A]">
+    <div className="w-full h-full bg-[#002B5A]">
       <FormHeadder></FormHeadder>
 
       {children}
