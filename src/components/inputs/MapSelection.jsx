@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { MapPinned, Navigation } from "lucide-react";
-import { Button } from "./ui/button";
+
 import {
   Drawer,
   DrawerClose,
@@ -15,13 +15,26 @@ import {
 } from "@/components/ui/drawer";
 import dynamic from "next/dynamic";
 import useGlobalStore from "@/store/useGlobalStore";
-import LocationDetails from "./LocationDetails";
+import LocationDetails from "@/components/LocationDetails";
 
 const MapWithNoSSR = dynamic(() => import("@/components/map.jsx"), {
   ssr: false,
 });
 
 function MapSelection() {
+  function addressmaker(display_name) {
+    // Step 1: Split into array
+    const parts = display_name.split(", ");
+
+    // Step 2: Remove last 3 items
+    const trimmedParts = parts.slice(0, -3);
+    // console.log(trimmedParts);
+
+    // Step 3: Join back to string
+    const newDisplayName = trimmedParts.join(", ");
+
+    return newDisplayName;
+  }
   const [open, setOpen] = useState(false);
   const { selected_Location_details, setselected_Location_details } =
     useGlobalStore();
@@ -33,10 +46,13 @@ function MapSelection() {
   }, []);
   return (
     <div className="w-full">
-      <h1 className="font-bold text-gray-600  ">Location</h1>
+      <h1 className=" text-gray-600 mb-3 font-bold">Location</h1>
       <div className="flex  w-full justify-between   md:w-5/6 ">
         <input
-          value={tempory_address}
+          onChange={(e) => {
+            settempory_address("" || e.target.value);
+          }}
+          value={addressmaker(tempory_address)}
           type="text"
           className=" w-full h-10  rounded ring-1 ring-[#002B5A]/20 focus:ring-1 focus:outline-none focus:ring-[#002B5A]/40 px-3 self-center  "
         />
@@ -52,7 +68,15 @@ function MapSelection() {
         </div>
       </div>
 
-      <Drawer open={open} onOpenChange={setOpen} className={"h-full"}>
+      <Drawer
+        open={open}
+        onOpenChange={setOpen}
+        modal={true}
+        className={"h-full"}
+        onInteractOutside={(e) => {
+          setOpen(false);
+        }}
+      >
         <DrawerContent className="h-screen px-8 ">
           <DrawerHeader className={"flex justify-between w-full "}>
             <div className="w-full h-10 flex  text-start">

@@ -3,7 +3,10 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import useGlobalStore from "@/store/useGlobalStore";
 import DiscrptionInput from "@/components/inputs/DiscrptionInput";
-import MapSelection from "../MapSelection";
+import MapSelection from "@/components/inputs/MapSelection";
+import DatePicker from "../inputs/DatePicker";
+import DropBox from "../inputs/DropBox";
+
 function DataFillingForm() {
   const { pageCount, setPageCount } = useGlobalStore();
   return (
@@ -14,6 +17,8 @@ function DataFillingForm() {
         </h1>
         <DiscrptionInput></DiscrptionInput>
         <MapSelection></MapSelection>
+        <DatePicker></DatePicker>
+        <DropBox></DropBox>
 
         <div className="w-full flex justify-between md:px-12 mt-20">
           <Button

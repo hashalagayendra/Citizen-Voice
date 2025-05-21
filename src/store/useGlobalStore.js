@@ -4,7 +4,8 @@ const useGlobalStore = create((set) => ({
   pageCount: 1,
   location_coordinates: { lat: 0, lng: 0 },
   selected_Location_details: null,
-  tempory_address: null,
+  tempory_address: "",
+  date: null,
 
   setPageCount: (count) => set({ pageCount: count }),
   setlocation_coordinates: (t, g) =>
@@ -12,6 +13,7 @@ const useGlobalStore = create((set) => ({
   setselected_Location_details: (data) =>
     set({ selected_Location_details: { ...data } }),
   settempory_address: (address) => set({ tempory_address: address }),
+  setDate: (date_details) => set({ date: date_details }),
 }));
 
 export default useGlobalStore;

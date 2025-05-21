@@ -9,6 +9,7 @@ function LocationDetails({ setOpen }) {
 
     // Step 2: Remove last 3 items
     const trimmedParts = parts.slice(0, -3);
+    // console.log(trimmedParts);
 
     // Step 3: Join back to string
     const newDisplayName = trimmedParts.join(", ");
