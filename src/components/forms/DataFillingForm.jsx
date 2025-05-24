@@ -5,7 +5,8 @@ import useGlobalStore from "@/store/useGlobalStore";
 import DiscrptionInput from "@/components/inputs/DiscrptionInput";
 import MapSelection from "@/components/inputs/MapSelection";
 import DatePicker from "../inputs/DatePicker";
-import DropBox from "../inputs/DropBox";
+
+import FileDropBox from "../inputs/FileDropBox";
 
 function DataFillingForm() {
   const { pageCount, setPageCount } = useGlobalStore();
@@ -15,10 +16,13 @@ function DataFillingForm() {
         <h1 className="text-xl text-[#01356A] mb-6 font-bold">
           Provide details about the issue
         </h1>
-        <DiscrptionInput></DiscrptionInput>
-        <MapSelection></MapSelection>
-        <DatePicker></DatePicker>
-        <DropBox></DropBox>
+        <div className="flex flex-col gap-6">
+          <DiscrptionInput></DiscrptionInput>
+          <MapSelection></MapSelection>
+          <DatePicker></DatePicker>
+
+          <FileDropBox></FileDropBox>
+        </div>
 
         <div className="w-full flex justify-between md:px-12 mt-20">
           <Button

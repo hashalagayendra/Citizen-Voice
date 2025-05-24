@@ -52,7 +52,7 @@ function MapSelection() {
           onChange={(e) => {
             settempory_address("" || e.target.value);
           }}
-          value={addressmaker(tempory_address)}
+          value={tempory_address}
           type="text"
           className=" w-full h-10  rounded ring-1 ring-[#002B5A]/20 focus:ring-1 focus:outline-none focus:ring-[#002B5A]/40 px-3 self-center  "
         />

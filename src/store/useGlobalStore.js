@@ -6,6 +6,8 @@ const useGlobalStore = create((set) => ({
   selected_Location_details: null,
   tempory_address: "",
   date: null,
+  uplodedFiles: null,
+  Severity_Level: "",
 
   setPageCount: (count) => set({ pageCount: count }),
   setlocation_coordinates: (t, g) =>
@@ -14,6 +16,8 @@ const useGlobalStore = create((set) => ({
     set({ selected_Location_details: { ...data } }),
   settempory_address: (address) => set({ tempory_address: address }),
   setDate: (date_details) => set({ date: date_details }),
+  setuplodedFiles: (files) => set({ uplodedFiles: files }),
+  setSeverity_Level: (level) => set({ Severity_Level: level }),
 }));
 
 export default useGlobalStore;

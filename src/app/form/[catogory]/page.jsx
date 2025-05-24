@@ -4,6 +4,7 @@ import { Progress } from "@/components/ui/progress";
 import Title_form from "@/components/forms/Title_form";
 import useGlobalStore from "@/store/useGlobalStore";
 import DataFillingForm from "@/components/forms/DataFillingForm";
+import SeverityLevelForm from "@/components/forms/SeverityLevelForm";
 
 function page() {
   const { pageCount, setpageCount } = useGlobalStore();
@@ -16,6 +17,10 @@ function page() {
       }
       case 2: {
         return <DataFillingForm></DataFillingForm>;
+        break;
+      }
+      case 3: {
+        return <SeverityLevelForm></SeverityLevelForm>;
         break;
       }
     }
