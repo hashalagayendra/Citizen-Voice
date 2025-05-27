@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 const useGlobalStore = create((set) => ({
   pageCount: 1,
+  description: null,
   location_coordinates: { lat: 0, lng: 0 },
   selected_Location_details: null,
   tempory_address: "",
@@ -38,6 +39,7 @@ const useGlobalStore = create((set) => ({
   setIs_It_Dangerous: (value) => set({ Is_It_Dangerous: value }),
   setFacilityType: (facility) => set({ FacilityType: facility }),
   setNameOfFacility: (facilityName) => set({ NameOfFacility: facilityName }),
+  setdescription: (desc) => set({ description: desc }),
 }));
 
 export default useGlobalStore;

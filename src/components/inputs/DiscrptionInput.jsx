@@ -1,10 +1,20 @@
 import React from "react";
+import useGlobalStore from "@/store/useGlobalStore";
+import { useEffect } from "react";
 
 function DiscrptionInput() {
+  const { description, setdescription } = useGlobalStore();
+
+  useEffect(() => {
+    console.log(description);
+  }, [description]);
   return (
     <div>
       <h1 className=" text-gray-600 mb-1 font-semibold">Description</h1>
       <textarea
+        onChange={(e) => {
+          setdescription(e.target.value);
+        }}
         style={{ textDecoration: "none" }}
         id="message"
         name="message"
