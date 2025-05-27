@@ -26,7 +26,7 @@ export default function DatePicker() {
 
   return (
     <div>
-      <h1 className=" text-gray-600 mb-3 font-bold">Date and Time</h1>
+      <h1 className=" text-gray-600 font-semibold mb-1">Date and Time</h1>
       <Popover>
         <PopoverTrigger asChild>
           <div
@@ -35,12 +35,12 @@ export default function DatePicker() {
               !tempdate && "text-muted-foreground"
             )}
           >
-            <div className="flex gap-4">
+            <div className="flex gap-4 text-gray-400 text-sm">
               <CalendarIcon />
               {tempdate ? (
                 format(tempdate, "PPP")
               ) : (
-                <span>Date & Time of Incident</span>
+                <span className="text-gray-400">Date & Time of Incident</span>
               )}
             </div>
           </div>

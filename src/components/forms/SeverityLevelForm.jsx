@@ -11,13 +11,15 @@ function SeverityLevelForm() {
   }, [Severity_Level]);
   return (
     <div className="bg-white w-full px-12 rounded-b-2xl py-6">
-      <h1 className="text-xl  text-[#002B5A]">How severe is the issue?</h1>
-      <p className="my-3 ">Severity Level</p>
+      <h1 className="md:text-2xl text-xl  text-[#002B5A]">
+        How severe is the issue?
+      </h1>
+      <p className=" mt-4 mb-1 ">Severity Level</p>
 
       <div className=" flex flex-col gap-6">
         <div className="  rounded-md ring-1 ring-gray-300">
           <label className="w-ful h-full px-10 flex  py-6 justify-between">
-            <h1 className="font-semibold ">Low</h1>
+            <h1 className="font-semibold md:text-base text-sm ">Low</h1>
             <h1 className="hidden md:flex">Minimal impact, not urgent</h1>
             <input
               className="scale-150 "
@@ -32,7 +34,7 @@ function SeverityLevelForm() {
 
         <div className="  rounded-md ring-1 ring-gray-300">
           <label className="w-ful h-full px-10 flex  py-6 justify-between">
-            <h1 className="font-semibold ">Medium</h1>
+            <h1 className="font-semibold md:text-base text-sm">Medium</h1>
             <h1 className="hidden md:flex">Moderate impact, needs attention</h1>
             <input
               className="scale-150 "
@@ -47,7 +49,7 @@ function SeverityLevelForm() {
 
         <div className="  rounded-md ring-1 ring-gray-300">
           <label className="w-ful h-full px-10 flex  py-6 justify-between">
-            <h1 className="font-semibold ">High</h1>
+            <h1 className="font-semibold md:text-base text-sm ">High</h1>
             <h1 className="hidden md:flex">Significant impact, urgent</h1>
             <input
               className="scale-150 "
@@ -62,7 +64,7 @@ function SeverityLevelForm() {
 
         <div className="  rounded-md ring-1 ring-gray-300">
           <label className="w-ful h-full px-10 flex  py-6 justify-between">
-            <h1 className="font-semibold ">Critical</h1>
+            <h1 className="font-semibold  md:text-base text-sm">Critical</h1>
             <h1 className="hidden md:flex">
               Severe impact, immediate action required
             </h1>

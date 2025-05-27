@@ -46,25 +46,25 @@ function MapSelection() {
   }, []);
   return (
     <div className="w-full">
-      <h1 className=" text-gray-600 mb-3 font-bold">Location</h1>
-      <div className="flex  w-full justify-between   md:w-5/6 ">
+      <h1 className=" text-gray-600 mb-1 font-semibold">Location</h1>
+      <div className="flex  w-full justify-between flex-col  md:w-5/6  md:flex-row">
         <input
           onChange={(e) => {
             settempory_address("" || e.target.value);
           }}
           value={tempory_address}
           type="text"
-          className=" w-full h-10  rounded ring-1 ring-[#002B5A]/20 focus:ring-1 focus:outline-none focus:ring-[#002B5A]/40 px-3 self-center  "
+          className=" w-full  h-10  rounded ring-1 ring-[#002B5A]/20 focus:ring-1 focus:outline-none focus:ring-[#002B5A]/40 px-3 self-center  "
         />
 
         <div
-          className="bg-[#01356A] gap-4  flex w-52 items-center justify-center rounded"
+          className="bg-[#01356A] gap-4 w-full flex md:w-60 md:py-0 py-2 items-center justify-center rounded px-2"
           onClick={() => {
             setOpen((pre) => !pre);
           }}
         >
           <MapPinned className="text-white"></MapPinned>{" "}
-          <h1 className="text-white">Select on Map</h1>
+          <h1 className="text-white  md:text-base">Select on Map</h1>
         </div>
       </div>
 

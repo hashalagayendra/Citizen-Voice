@@ -5,6 +5,8 @@ import Title_form from "@/components/forms/Title_form";
 import useGlobalStore from "@/store/useGlobalStore";
 import DataFillingForm from "@/components/forms/DataFillingForm";
 import SeverityLevelForm from "@/components/forms/SeverityLevelForm";
+import ComplaintSubmissionMethodForm from "@/components/forms/ComplaintSubmissionMethodForm";
+import ReviewAndSubmitForm from "@/components/forms/ReviewAndSubmitForm";
 
 function page() {
   const { pageCount, setpageCount } = useGlobalStore();
@@ -23,6 +25,14 @@ function page() {
         return <SeverityLevelForm></SeverityLevelForm>;
         break;
       }
+      case 4: {
+        return <ComplaintSubmissionMethodForm></ComplaintSubmissionMethodForm>;
+        break;
+      }
+      case 5: {
+        return <ReviewAndSubmitForm></ReviewAndSubmitForm>;
+        break;
+      }
     }
   };
 
@@ -30,14 +40,14 @@ function page() {
     <div>
       <div className="w-10/12 bg-white self-center  rounded-2xl mx-auto my-20">
         <div className=" bg-[#01356A] py-10 px-12 w-full rounded-t-2xl  ">
-          <h1 className=" text-white text-2xl font-semibold pb-2">
+          <h1 className=" text-white text-xl md:text-2xl font-semibold pb-2">
             Environmental Hazard Complaint Form
           </h1>
-          <h1 className="text-gray-400 text-md">
+          <h1 className="text-gray-400 text-sm md:text-base">
             Report environmental issues to help us create a cleaner, safer
             environment
           </h1>
-          <div className="flex justify-between text-white pt-8 font-semibold pb-4">
+          <div className="flex justify-between text-white pt-8 font-semibold pb-4 md:text-base text-sm">
             <h1>1 of 5</h1>
             <h1>0% complete</h1>
           </div>

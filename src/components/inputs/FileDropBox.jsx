@@ -24,14 +24,17 @@ export default function FileDropBox() {
 
   return (
     <div>
-      <h1 className="font-bold"> Upload Evidence (Optional)</h1>
+      <h1 className="font-semibold text-gray-600 ">
+        {" "}
+        Upload Evidence (Optional)
+      </h1>
       <div
         className={`border-dashed border-2 border-gray-400  text-center rounded-md cursor-pointer md:w-5/6 w-full   flex flex-col items-center  ${
           uplodedFiles && "gap-4 "
         }`}
       >
         <div
-          className=" text-center flex flex-col items-center w-full h-42 justify-around"
+          className=" text-center flex flex-col items-center w-full h-42 justify-around "
           {...getRootProps()}
         >
           <input {...getInputProps()} />
@@ -41,12 +44,12 @@ export default function FileDropBox() {
             </div>
           ) : (
             <>
-              <Upload size={40} strokeWidth={1}></Upload>
-              <p className="text-gray-500">
+              <Upload strokeWidth={1} className="scale-155 mt-4"></Upload>
+              <p className="text-gray-500 md:text-base text-sm ">
                 Drag and drop files here or click to select files
               </p>
               <Button>Browse File</Button>
-              <p className="text-gray-500">
+              <p className="text-gray-500 md:text-base text-sm">
                 Supported formats: JPG, PNG, MP4, MOV
               </p>
             </>
