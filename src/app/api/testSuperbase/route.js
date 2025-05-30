@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(request) {
   try {
@@ -29,3 +30,21 @@ export async function POST(request) {
 //     );
 //   }
 // }
+
+// export async function GET() {
+//   const users = await prisma.User.findMany();
+//   return NextResponse.json({ success: true, users }, { status: 201 });
+// }
+
+export async function GET() {
+  try {
+    const users = await prisma.User.findMany();
+
+    return NextResponse.json({ success: true, users }, { status: 201 });
+  } catch (e) {
+    return NextResponse.json(
+      { success: false, message: e.message },
+      { status: 500 }
+    );
+  }
+}

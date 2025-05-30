@@ -3,7 +3,7 @@ import logo from "@/assests/logo.png";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-function FormHeadder() {
+function LoginFormHeadder() {
   return (
     <div className="w-full h-16 bg-[#01356A] flex items-center px-4 justify-between pr-24 shadow-2xl">
       <div className=" flex items-center gap-3 ">
@@ -35,4 +35,4 @@ function FormHeadder() {
   );
 }
 
-export default FormHeadder;
+export default LoginFormHeadder;

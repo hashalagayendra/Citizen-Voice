@@ -1,11 +1,11 @@
 import React from "react";
-import FormHeadder from "@/components/FormHeadder";
+import LoginFormHeadder from "@/components/LoginFormHeadder";
 import logo from "@/assests/logo.png";
 
 export default function layout({ children }) {
   return (
     <div className="w-full h-full bg-[#002B5A]">
-      <FormHeadder></FormHeadder>
+      <LoginFormHeadder></LoginFormHeadder>
 
       {children}
 
