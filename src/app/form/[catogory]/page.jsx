@@ -1,6 +1,7 @@
 "use client";
 
 import { Progress } from "@/components/ui/progress";
+import { usePathname } from "next/navigation";
 
 import DataFillingForm from "@/components/forms/DataFillingForm";
 import SeverityLevelForm from "@/components/forms/SeverityLevelForm";
@@ -26,6 +27,11 @@ function page() {
   useEffect(() => {
     console.log(navigateURL);
   }, [navigateURL]);
+
+  // dont remove this
+  useEffect(() => {
+    setPageCount(1);
+  }, []);
 
   return (
     <div>

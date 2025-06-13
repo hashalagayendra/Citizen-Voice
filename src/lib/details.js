@@ -1,4 +1,13 @@
 import { ChevronLeft } from "lucide-react";
+import { Cloudy } from "lucide-react";
+import { Droplet } from "lucide-react";
+import { Volume2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
+import { VenetianMask } from "lucide-react";
+import { UserLock } from "lucide-react";
+import { Pill } from "lucide-react";
+import { SprayCan } from "lucide-react";
+import { Eye } from "lucide-react";
 
 import DiscrptionInput from "@/components/inputs/DiscrptionInput";
 import MapSelection from "@/components/inputs/MapSelection";
@@ -26,7 +35,7 @@ const catogoryData = {
         id: "AirPollution",
         title: "Air Pollution",
         subTitle: "Report issues related to air quality",
-        Icon: ChevronLeft,
+        Icon: Cloudy,
         elements: [DiscrptionInput, MapSelection, DatePicker, FileDropBox],
       },
       {
@@ -34,7 +43,7 @@ const catogoryData = {
         title: "Water Pollution",
         subTitle:
           "Report contamination of rivers, lakes, or public water sources.",
-        Icon: ChevronLeft,
+        Icon: Droplet,
         elements: [],
       },
       {
@@ -42,7 +51,7 @@ const catogoryData = {
         title: "Noise Pollution",
         subTitle:
           "Report excessive noise from construction, traffic, or events.",
-        Icon: ChevronLeft,
+        Icon: Volume2,
         elements: [],
       },
       {
@@ -50,7 +59,7 @@ const catogoryData = {
         title: "Illegal Waste Dumping",
         subTitle:
           "Report dumping of garbage, sewage, or hazardous materials in unauthorized areas.",
-        Icon: ChevronLeft,
+        Icon: Trash2,
         elements: [],
       },
       {
@@ -58,13 +67,103 @@ const catogoryData = {
         title: "Radiation or Toxic Exposure",
         subTitle:
           "Report any incidents of harmful chemical/radioactive exposure.",
-        Icon: ChevronLeft,
+        Icon: Trash2,
         elements: [],
       },
     ],
   },
-  Crime: {},
-  Infrastructure: {},
+  Crime: {
+    title: "Crime and Safety Complaint Form",
+    subTitle:
+      "Report criminal or suspicious activities to support a safer community.",
+    thirdTitle:
+      "Select the type of suspicious or criminal activity you would like to report.",
+    subCatogoris: [
+      {
+        id: "TheftorBurglary",
+        title: "Theft or Burglary",
+        subTitle: "Report incidents of stealing or break-ins",
+        Icon: VenetianMask,
+        elements: [DiscrptionInput, MapSelection, DatePicker, FileDropBox],
+      },
+      {
+        id: "AssaultorHarassment",
+        title: "Assault or Harassment",
+        subTitle: "Report physical assault or sexual harassment cases.",
+        Icon: UserLock,
+        elements: [],
+      },
+      {
+        id: "DrugDealing",
+        title: "Drug Dealing Pollution",
+        subTitle: "Report drug use or trafficking in your area.",
+        Icon: Pill,
+        elements: [],
+      },
+      {
+        id: "Vandalism",
+        title: " Vandalism",
+        subTitle: "Report deliberate damage to public or private property.",
+        Icon: SprayCan,
+        elements: [],
+      },
+      {
+        id: "SuspiciousActivities",
+        title: " Suspicious Activities",
+        subTitle: "Report unknown persons or behavior causing concern.",
+        Icon: Eye,
+        elements: [],
+      },
+    ],
+  },
+  Infrastructure: {
+    title: "Environmental Hazard Complaint Form",
+    subTitle:
+      "Report environmental issues to help us create a cleaner, safer environment",
+    thirdTitle:
+      "Select a category that best describes the environmental issue you want to report.",
+    subCatogoris: [
+      {
+        id: "AirPollution",
+        title: "Air Pollution",
+        subTitle: "Report issues related to air quality",
+        Icon: Cloudy,
+        elements: [DiscrptionInput, MapSelection, DatePicker, FileDropBox],
+      },
+      {
+        id: "WaterPollution",
+        title: "Water Pollution",
+        subTitle:
+          "Report contamination of rivers, lakes, or public water sources.",
+        Icon: Droplet,
+        elements: [],
+      },
+      {
+        id: "NoisePollution",
+        title: "Noise Pollution",
+        subTitle:
+          "Report excessive noise from construction, traffic, or events.",
+        Icon: Volume2,
+        elements: [],
+      },
+      {
+        id: "IllegalWasteDumping",
+        title: "Illegal Waste Dumping",
+        subTitle:
+          "Report dumping of garbage, sewage, or hazardous materials in unauthorized areas.",
+        Icon: Trash2,
+        elements: [],
+      },
+      {
+        id: "RadiationorToxicExposure",
+        title: "Radiation or Toxic Exposure",
+        subTitle:
+          "Report any incidents of harmful chemical/radioactive exposure.",
+        Icon: Trash2,
+        elements: [],
+      },
+    ],
+  },
   Illegal: {},
   Corruption: {},
   Public_Employee: {},
