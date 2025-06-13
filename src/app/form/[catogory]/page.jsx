@@ -45,7 +45,7 @@ function page() {
           </h1>
           <div className="flex justify-between text-white pt-8 font-semibold pb-4 md:text-base text-sm">
             <h1>1 of 5</h1>
-            <h1>0% complete</h1>
+            <h1>{0}% complete</h1>
           </div>
           <Progress
             value={(100 / 5) * (pageCount - 1)}
