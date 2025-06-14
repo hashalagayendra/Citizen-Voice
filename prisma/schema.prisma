@@ -15,9 +15,9 @@ datasource db {
 }
 
 model User {
-  name          String
+  name          String?
   emailAddress  String   @id
-  password      String
+  password      String?
   createdAt     DateTime @default(now())
   role          String
   complains     Complain[]

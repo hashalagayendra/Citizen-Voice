@@ -4,11 +4,77 @@ import React from "react";
 import LoginPageImage from "@/assests/loginImage.png";
 import GoogleLogo from "@/assests/google.png";
 import Link from "next/link";
+import { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { Toaster, toast } from "react-hot-toast";
+import axios from "axios";
 
 function page() {
+  const router = useRouter();
+  const [email, setemail] = useState();
+  const [password, setpassword] = useState("");
+
+  async function haddleregister() {
+    const errors = [];
+
+    if (password.length < 6) {
+      errors.push("Password must be at least 6 characters.");
+    }
+    if (!/[a-z]/.test(password) && !/[A-Z]/.test(password)) {
+      errors.push(
+        "Password must contain at least one letter (uppercase or lowercase)."
+      );
+    }
+    if (!/[0-9]/.test(password)) {
+      errors.push("Password must contain at least one number.");
+    }
+
+    if (errors.length > 0) {
+      errors.map((each) => {
+        toast.error(each);
+      });
+
+      return;
+    }
+
+    const exsistuser = await axios.post("/api/user", {
+      method: "check_user_by_email",
+      data: {
+        email: email,
+      },
+    });
+
+    console.log(exsistuser.data.userExists);
+
+    if (exsistuser.data.userExists) {
+      toast.error("User already registered with this email.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("/api/user", {
+        method: "add_user",
+        data: {
+          email: email,
+          password: password,
+        },
+      });
+
+      console.log("response");
+
+      toast.success("Success Registration");
+
+      router.push("/login");
+    } catch (e) {
+      console.log("registation faild in catch block ", e);
+    }
+  }
+
   return (
     <div className=" h-full bg-[#01356A] ">
       <MainFormHeadder></MainFormHeadder>
+      <Toaster position="top-right"></Toaster>
 
       <div className="w-full flex h-[calc(100vh-64px)]  mt-16 bg-white ">
         <div className="flex-1 md:flex-1/2 h-full flex flex-col justify-around items-center px-10 py-4 ">
@@ -26,6 +92,9 @@ function page() {
             <div className="w-full max-w-96 mb-3">
               <h1>Email</h1>
               <input
+                onChange={(e) => {
+                  setemail(e.target.value);
+                }}
                 placeholder="Example@email.com"
                 type="email"
                 className="w-full bg-[#e9f4ff] rounded focus:bg-[#e6f3ff] focus:outline-0 focus:ring-1 ring-blue-500 h-12 px-3 py-1"
@@ -35,6 +104,9 @@ function page() {
             <div className="w-full max-w-96 mb-3">
               <h1>Password</h1>
               <input
+                onChange={(e) => {
+                  setpassword(e.target.value);
+                }}
                 placeholder="at least 8 chäracters"
                 type="password"
                 className="w-full bg-[#e9f4ff] rounded focus:bg-[#e6f3ff] focus:outline-0 focus:ring-1 ring-blue-500 h-12 px-3 py-1"
@@ -50,7 +122,12 @@ function page() {
               />
             </div>
           </div>
-          <div className="w-full max-w-96 bg-[#01356A] rounded h-12 flex justify-center items-center">
+          <div
+            onClick={() => {
+              haddleregister();
+            }}
+            className="w-full max-w-96 bg-[#01356A] rounded h-12 flex justify-center items-center"
+          >
             <h1 className="text-white font-semibold">Sign in</h1>
           </div>
 
