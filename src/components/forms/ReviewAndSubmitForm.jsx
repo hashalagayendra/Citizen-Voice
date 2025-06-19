@@ -40,9 +40,11 @@ function ReviewAndSubmitForm() {
 
   async function uploaddata() {
     const formdetails = {
+      C_status: "In Progress",
       MainTitle: SelectedcatogoryName,
       SubTitle: SubcatogoryName,
-      userEmail: "test@test.test",
+      userEmail:
+        Submission_Method === "without_id" ? "test@test.test" : session.email,
       ...(description && { description }),
       ...(location_coordinates && { location_coordinates }),
       ...(tempory_address && { tempory_address }),

@@ -44,6 +44,7 @@ model Complain {
   Is_It_Dangerous       String?
   FacilityType          String?
   createdAt     DateTime @default(now())
+  C_status        String?
 
   NameOfFacility        String?
 

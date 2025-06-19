@@ -1,6 +1,6 @@
 import React from "react";
 
-function UserDashBoardCompainCard() {
+function UserDashBoardCompainCard({ MainTitle, SubTitle, Location, Severity }) {
   return (
     <div className=" w-full max-w-80   bg-white rounded-xl px-8 py-10 flex flex-col gap-5">
       <div className="flex items-center justify-between ">
@@ -14,22 +14,22 @@ function UserDashBoardCompainCard() {
       <div className="flex flex-col  gap-3">
         <div className="flex gap-6 justify-between">
           <h1 className="font-semibold">Catogory</h1>
-          <h1>Envirenment</h1>
+          <h1 className="text-sm">{MainTitle}</h1>
         </div>
 
         <div className="flex justify-between">
           <h1 className="font-semibold">Title</h1>
-          <h1>Air Pollution</h1>
+          <h1 className="text-sm">{SubTitle}</h1>
         </div>
 
         <div className="flex justify-between">
           <h1 className="font-semibold">Location</h1>
-          <h1>dasdasdasd</h1>
+          <h1 className="text-sm">{Location}</h1>
         </div>
 
         <div className="flex justify-between">
           <h1 className="font-semibold">Severity</h1>
-          <h1>High</h1>
+          <h1>{Severity}</h1>
         </div>
       </div>
 

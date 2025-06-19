@@ -26,7 +26,11 @@ export async function POST(req) {
 }
 export async function GET() {
   try {
-    const users = await prisma.user.findMany();
+    const users = await prisma.complain.findMany({
+      where: {
+        userEmail: "test@test.test",
+      },
+    });
     return NextResponse.json({ data: users }, { status: 200 });
   } catch (err) {
     return NextResponse.json({ messege: err.message }, { status: 500 });
