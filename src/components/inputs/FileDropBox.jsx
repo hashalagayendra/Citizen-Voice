@@ -6,9 +6,11 @@ import { Heading1, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { imageConfigDefault } from "next/dist/shared/lib/image-config";
 import useGlobalStore from "@/store/useGlobalStore";
+import axios from "axios";
 
 export default function FileDropBox() {
   const { uplodedFiles, setuplodedFiles } = useGlobalStore();
+  const { uploadedImageUrls, setuploadedImageUrls } = useGlobalStore();
   const onDrop = (acceptedFiles) => {
     if (!uplodedFiles) {
       setuplodedFiles([...acceptedFiles]);
@@ -19,7 +21,8 @@ export default function FileDropBox() {
 
   useEffect(() => {
     console.log(uplodedFiles);
-  }, [uplodedFiles]);
+    console.log(uploadedImageUrls);
+  }, [uplodedFiles, uploadedImageUrls]);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
@@ -62,6 +65,11 @@ export default function FileDropBox() {
             })}
         </div>
       </div>
+
+      <div
+        // onClick={uploadImagesToCloudinary}
+        className="w-10 h-10 bg-red-500"
+      ></div>
     </div>
   );
 }

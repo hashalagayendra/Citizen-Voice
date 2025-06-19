@@ -31,7 +31,7 @@ const authOptions = {
         if (!isMatch) throw new Error("Invalid password");
 
         return {
-          email: user.email,
+          email: user.emailAddress,
         };
       },
     }),

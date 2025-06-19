@@ -8,6 +8,7 @@ const useGlobalStore = create((set) => ({
   tempory_address: "",
   date: null,
   uplodedFiles: null,
+  uploadedImageUrls: null,
   Severity_Level: null,
   Submission_Method: null,
   Any_Witnesses: null,
@@ -19,6 +20,7 @@ const useGlobalStore = create((set) => ({
   Is_It_Dangerous: null,
   FacilityType: null,
   NameOfFacility: null,
+  responseAftersendingData: null,
 
   setPageCount: (count) => set({ pageCount: count }),
   setlocation_coordinates: (t, g) =>
@@ -40,6 +42,8 @@ const useGlobalStore = create((set) => ({
   setFacilityType: (facility) => set({ FacilityType: facility }),
   setNameOfFacility: (facilityName) => set({ NameOfFacility: facilityName }),
   setdescription: (desc) => set({ description: desc }),
+  setuploadedImageUrls: (urls) => set({ uploadedImageUrls: urls }),
+  setresponseAftersendingData: (res) => set({ responseAftersendingData: res }),
 }));
 
 export default useGlobalStore;

@@ -1,14 +1,33 @@
 "use client";
 import { Menu } from "lucide-react";
 import { ArrowLeft } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import logo from "@/assests/logo.png";
 import { X } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import { useSession, signOut } from "next-auth/react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { se } from "date-fns/locale";
+import { capitalize } from "@mui/material";
+import { usePathname } from "next/navigation";
 
 function MainFormHeadder() {
   const [mobileMenu, setmobileMenu] = useState(false);
   const [mobileCatogoris, setmobileCatogoris] = useState(false);
+  const [userimage, setuserimage] = useState();
+  const pathname = usePathname();
+  const { data: session, status } = useSession();
+  // console.log(session);
+  // console.log(pathname);
+
+  const namePart = session?.user.email.split("@")[0];
+
+  useEffect(() => {
+    if (session) {
+      setuserimage(session?.pic);
+    }
+  }, []);
 
   return (
     <div className="h-16 bg-[#002B5A] flex items-center justify-between fixed top-0 w-full  z-50">
@@ -34,39 +53,39 @@ function MainFormHeadder() {
               <div
                 className={` pt-3 pb-5 text-start  ${"bg-white text-black"}  `}
               >
-                <Link href={"form/Environment"}>
+                <Link href={"/form/Environmental_Hazards"}>
                   <h1
                     className={` w-full px-15 py-2.5  ${"hover:bg-blue-400"}`}
                   >
                     Environmental Hazards
                   </h1>
                 </Link>
-                <Link href={"form/Crime"}>
+                <Link href={"/form/Poor_Public_Services"}>
                   <h1 className="hover:bg-blue-400 w-full pl-15 py-2.5 ">
                     Poor Public Services
                   </h1>
                 </Link>
-                <Link href={"form/Environment"}>
+                <Link href={"/form/Public_Employee_Misconduct"}>
                   <h1 className="hover:bg-blue-400 w-full pl-15 py-2.5">
                     Public Employee Misconduct
                   </h1>
                 </Link>
-                <Link href={"form/Environment"}>
+                <Link href={"/form/Corruption_and_Bribery"}>
                   <h1 className="hover:bg-blue-400 w-full pl-15 py-2.5 ">
                     Corruption & Bribery
                   </h1>
                 </Link>
-                <Link href={"form/Environment"}>
+                <Link href={"/form/Illegal_Constructions"}>
                   <h1 className="hover:bg-blue-400 w-full pl-15 py-2.5 ">
                     Illegal Constructions
                   </h1>
                 </Link>
-                <Link href={"form/Environment"}>
+                <Link href={"/form/Infrastructure_Issues"}>
                   <h1 className="hover:bg-blue-400 w-full pl-15 py-2.5 ">
                     Infrastructure Issues
                   </h1>
                 </Link>
-                <Link href={"form/Environment"}>
+                <Link href={"/form/Crime"}>
                   <h1 className="hover:bg-blue-400 w-full pl-15 py-2.5">
                     Crime Reporting
                   </h1>
@@ -77,12 +96,44 @@ function MainFormHeadder() {
 
           <h1>Complains</h1>
 
-          <h1>Languages</h1>
+          <h1 onClick={signOut}>Languages</h1>
         </div>
-        <Link href={"/login"}>
-          {" "}
-          <div className="bg-amber-400 px-6 py-2 rounded text-[#01356A] text-sm md:text-base ">
-            Login
+
+        {pathname === "/login" ? (
+          <Link href={"/signup"}>
+            {" "}
+            <div
+              className={`bg-amber-400 px-6 py-2 rounded text-[#01356A] text-sm md:text-base ${
+                session && "hidden"
+              } `}
+            >
+              Sign up
+            </div>
+          </Link>
+        ) : (
+          <Link href={"/login"}>
+            {" "}
+            <div
+              className={`bg-amber-400 px-6 py-2 rounded text-[#01356A] text-sm md:text-base ${
+                session && "hidden"
+              } `}
+            >
+              Login
+            </div>
+          </Link>
+        )}
+
+        <Link href={"/user_dashboard"} className={`${!session && "hidden"}`}>
+          <div className="flex gap-4 items-center  ">
+            <Avatar className={"w-[35] h-[35] "}>
+              <AvatarImage src={session?.pic} />
+              <AvatarFallback>
+                {session ? capitalize(session.email[0]) : ""}
+              </AvatarFallback>
+            </Avatar>
+            <h1 className="text-white font-semibold">
+              {session?.user.name ? session.user.name : namePart}
+            </h1>
           </div>
         </Link>
 
@@ -132,7 +183,7 @@ function MainFormHeadder() {
 
       <div
         onClick={() => {
-          setmobileMenu(false);
+          // setmobileMenu(false);
           setmobileCatogoris(false);
         }}
         className={` z-50 bg-white   absolute top-full  w-full h-[calc(100dvh-64px)] flex-col items-center justify-center text-xl gap-6 flex  text-black sm:hidden ${
@@ -140,11 +191,10 @@ function MainFormHeadder() {
         } `}
       >
         <div
-          className="absolute top-14 right-14"
+          className="absolute top-14 right-14 bg-red-600"
           onClick={() => {
-            setmobileCatogoris((pre) => {
-              !pre;
-            });
+            setmobileCatogoris(false);
+
             setmobileMenu(true);
           }}
         >
@@ -159,32 +209,32 @@ function MainFormHeadder() {
               Environmental Hazards
             </h1>
           </Link>
-          <Link href={"form/Crime"}>
+          <Link href={"form/Poor_Public"}>
             <h1 className="hover:bg-blue-400 w-full  py-2.5 ">
               Poor Public Services
             </h1>
           </Link>
-          <Link href={"form/Environment"}>
+          <Link href={"form/Public_Employee"}>
             <h1 className="hover:bg-blue-400 w-full  py-2.5">
               Public Employee Misconduct
             </h1>
           </Link>
-          <Link href={"form/Environment"}>
+          <Link href={"form/Corruption"}>
             <h1 className="hover:bg-blue-400 w-full  py-2.5 ">
               Corruption & Bribery
             </h1>
           </Link>
-          <Link href={"form/Environment"}>
+          <Link href={"form/Illegal"}>
             <h1 className="hover:bg-blue-400 w-full  py-2.5 ">
               Illegal Constructions
             </h1>
           </Link>
-          <Link href={"form/Environment"}>
+          <Link href={"form/Infrastructure"}>
             <h1 className="hover:bg-blue-400 w-full  py-2.5 ">
               Infrastructure Issues
             </h1>
           </Link>
-          <Link href={"form/Environment"}>
+          <Link href={"form/Crime"}>
             <h1 className="hover:bg-blue-400 w-full  py-2.5">
               Crime Reporting
             </h1>

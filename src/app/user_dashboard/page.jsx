@@ -1,14 +1,29 @@
+"use client";
 import MainFormHeadder from "@/components/MainFormHeadder";
 import UserDashBoardCompainCard from "@/components/UserDashBoardCompainCard";
 import UserDashBoardProgressCard from "@/components/UserDashBoardProgressCard";
 import React from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 function page() {
+  const router = useRouter();
+
+  const { data: session, status } = useSession();
+  if (status === "loading") {
+    return <p className="text-white text-center">Loading...</p>;
+  }
+
+  if (status === "unauthenticated") {
+    router.push("/");
+    return null;
+  }
+
   return (
     <div className=" bg-[#01356A]">
       <MainFormHeadder></MainFormHeadder>
       <div className="h-full mt-16 py-7 px-12 md:px-0 lg:px-12">
-        <h1 className="text-3xl text-white font-bold my-14 ml-5">DashBoard</h1>
+        <h1 className="text-3xl text-white font-bold my-14 ml-5">Dash Board</h1>
         <div className="py-5 px-6 bg-white rounded-2xl ">
           <div className="grid md:grid-cols-3 grid-cols-2 gap-4 ">
             <UserDashBoardProgressCard

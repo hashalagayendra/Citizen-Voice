@@ -1,0 +1,7 @@
+-- AlterTable
+ALTER TABLE "Complain" ALTER COLUMN "description" DROP NOT NULL,
+ALTER COLUMN "date" DROP NOT NULL,
+ALTER COLUMN "location" DROP NOT NULL,
+ALTER COLUMN "typeOfCategory" DROP NOT NULL,
+ALTER COLUMN "typeOfComplain" DROP NOT NULL,
+ALTER COLUMN "stCurrentlyDangerous" DROP NOT NULL;

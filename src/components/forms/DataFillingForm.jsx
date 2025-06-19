@@ -1,8 +1,11 @@
+"use Client";
 import React from "react";
 import Link from "next/link";
 import catogoryData from "@/lib/details";
 import { Button } from "@/components/ui/button";
 import useGlobalStore from "@/store/useGlobalStore";
+import { useState } from "react";
+import { useEffect } from "react";
 
 import DiscrptionInput from "@/components/inputs/DiscrptionInput";
 import MapSelection from "@/components/inputs/MapSelection";
@@ -27,6 +30,42 @@ function DataFillingForm() {
 
   console.log(catogoryData[main]);
 
+  const { uplodedFiles, setuplodedFiles } = useGlobalStore();
+  const { uploadedImageUrls, setuploadedImageUrls } = useGlobalStore();
+
+  const uploadImagesToCloudinary = async () => {
+    try {
+      const urls = [];
+      if (!uplodedFiles) {
+        return;
+      }
+
+      for (const file of uplodedFiles) {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const res = await fetch("/api/imageUpload", {
+          method: "POST",
+          body: formData,
+        });
+
+        const data = await res.json();
+        if (data?.url) {
+          urls.push(data.url); // ✅ just collect
+        }
+      }
+
+      // ✅ One update after all are done
+      setuploadedImageUrls([...urls]); // ✅ show all at once
+    } catch (e) {
+      console.log("error image upload");
+    }
+  };
+
+  useEffect(() => {
+    console.log(uplodedFiles);
+    console.log(uploadedImageUrls);
+  }, [uplodedFiles, uploadedImageUrls]);
   return (
     <div>
       <div className="bg-white w-full px-12 rounded-b-2xl py-6">
@@ -71,7 +110,10 @@ function DataFillingForm() {
 
           <Button
             className={"md:text-base text-sm"}
-            onClick={() => setPageCount(pageCount + 1)}
+            onClick={async () => {
+              await uploadImagesToCloudinary();
+              await setPageCount(pageCount + 1);
+            }}
           >
             Continue
           </Button>

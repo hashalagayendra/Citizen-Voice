@@ -8,12 +8,19 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Toaster, toast } from "react-hot-toast";
+import { useSearchParams } from "next/navigation";
 import axios from "axios";
+
+import { useSession } from "next-auth/react";
 
 function page() {
   const router = useRouter();
   const [email, setemail] = useState();
   const [password, setpassword] = useState("");
+  const [conf_password, setconf_password] = useState("");
+
+  const { data: session, status } = useSession();
+  if (status === "authenticated") router.push("/");
 
   async function haddleregister() {
     const errors = [];
@@ -28,6 +35,10 @@ function page() {
     }
     if (!/[0-9]/.test(password)) {
       errors.push("Password must contain at least one number.");
+    }
+
+    if (password !== conf_password) {
+      errors.push("Confirm Password is not match");
     }
 
     if (errors.length > 0) {
@@ -116,6 +127,9 @@ function page() {
             <div className="w-full max-w-96">
               <h1>Confirm Password</h1>
               <input
+                onChange={(e) => {
+                  setconf_password(e.target.value);
+                }}
                 placeholder="at least 8 chäracters"
                 type="password"
                 className="w-full bg-[#e9f4ff] rounded focus:bg-[#e6f3ff] focus:outline-0 focus:ring-1 ring-blue-500 h-12 px-3 py-1"
@@ -138,7 +152,10 @@ function page() {
             </span>
           </div>
 
-          <div className="w-full max-w-96  bg-[#e9f4ff] rounded h-12 flex justify-center items-center gap-3">
+          <div
+            onClick={() => signIn("google", { callbackUrl: "/login" })}
+            className="w-full max-w-96  bg-[#e9f4ff] rounded h-12 flex justify-center items-center gap-3"
+          >
             <div className="h-full py-3">
               <img src={GoogleLogo.src} alt="" className="h-full" />
             </div>

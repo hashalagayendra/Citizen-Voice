@@ -1,4 +1,5 @@
 "use client";
+import { useSession } from "next-auth/react";
 import React, { useEffect } from "react";
 import MainFormHeadder from "@/components/MainFormHeadder";
 import { Toaster, toast } from "react-hot-toast";
@@ -6,15 +7,23 @@ import LoginPageImage from "@/assests/loginImage.png";
 import GoogleLogo from "@/assests/google.png";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 function page() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [errormessege_haddler, seterrormessege_haddler] = useState(0);
+
+  const { data: session, status } = useSession();
+  if (status === "authenticated") router.push("/");
+  if (status === "unauthenticated") {
+    toast.error("please login");
+  }
 
   if (error && !errormessege_haddler) {
     toast.error(error);
