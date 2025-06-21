@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { PrismaClient } from "@/generated/prisma";
 import bcrypt from "bcrypt";
 const prisma = new PrismaClient();
+import { database } from "@/lib/firebaseConfig";
+
+import { ref, set, push } from "firebase/database";
 
 // add user
 export async function POST(req) {
@@ -44,6 +47,23 @@ export async function POST(req) {
           role: "user",
         },
       });
+
+      const saveDatainFirebase = async (email) => {
+        try {
+          console.log("Saving data to Firebase email :", email);
+          const newUserRef = push(ref(database, "users"));
+
+          await set(newUserRef, {
+            email: email,
+          });
+
+          console.log("Data saved successfully under ID:", newUserRef.key);
+        } catch (error) {
+          console.error("Error saving data:", error);
+        }
+      };
+
+      saveDatainFirebase(user.emailAddress);
 
       return NextResponse.json(
         { message: "User created successfully", data: user },

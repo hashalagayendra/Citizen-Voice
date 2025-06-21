@@ -5,6 +5,10 @@ import GoogleProvider from "next-auth/providers/google";
 import { PrismaClient } from "@/generated/prisma";
 import bcrypt from "bcrypt";
 
+import { database } from "@/lib/firebaseConfig";
+
+import { ref, set, push } from "firebase/database";
+
 const prisma = new PrismaClient();
 
 const authOptions = {
@@ -61,6 +65,25 @@ const authOptions = {
               role: "user",
             },
           });
+
+          // Save user data in Firebase
+
+          const saveDatainFirebase = async (email) => {
+            try {
+              console.log("Saving data to Firebase email :", email);
+              const newUserRef = push(ref(database, "users"));
+
+              await set(newUserRef, {
+                email: email,
+              });
+
+              console.log("Data saved successfully under ID:", newUserRef.key);
+            } catch (error) {
+              console.error("Error saving data:", error);
+            }
+          };
+
+          saveDatainFirebase(newuser.emailAddress);
         }
       }
 
@@ -68,10 +91,18 @@ const authOptions = {
     },
 
     async jwt({ token, user, account, profile }) {
+      const user_role = await prisma.user.findUnique({
+        where: { emailAddress: token.email },
+        select: { role: true },
+      });
+
+      console.log("role", user_role);
+
       if (user) {
         token.email = user.email;
 
         token.pic = profile?.picture;
+        token.role = user_role.role;
 
         console.log(user);
       }
@@ -79,8 +110,10 @@ const authOptions = {
     },
     async session({ session, token }) {
       session.email = token.email;
+      session.user.role = token.role;
 
       session.pic = token.pic;
+      console.log(session);
 
       return session;
     },

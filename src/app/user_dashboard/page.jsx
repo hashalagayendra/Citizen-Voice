@@ -1,4 +1,5 @@
 "use client";
+
 import MainFormHeadder from "@/components/MainFormHeadder";
 import UserDashBoardCompainCard from "@/components/UserDashBoardCompainCard";
 import UserDashBoardProgressCard from "@/components/UserDashBoardProgressCard";
@@ -6,12 +7,14 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import ChatHaddler from "@/components/ChatHaddler";
 
 function page() {
   const router = useRouter();
   const { data: session, status } = useSession();
   const [responsedata, setresponsedata] = useState();
   const [In_Progress, setIn_Progress] = useState();
+  const [chatopen, setChatOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +38,10 @@ function page() {
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/");
+    }
+
+    if (status === "authenticated" && session?.user?.role !== "user") {
+      router.push("/admin_dashboard");
     }
   }, [status, router]);
 
@@ -114,6 +121,8 @@ function page() {
           </div>
         </div>
       </div>
+      <ChatHaddler></ChatHaddler>
+      {/* Beautiful Chat Open Button */}
     </div>
   );
 }

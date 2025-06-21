@@ -191,7 +191,7 @@ function MainFormHeadder() {
         } `}
       >
         <div
-          className="absolute top-14 right-14 bg-red-600"
+          className="absolute top-14 right-14 "
           onClick={() => {
             setmobileCatogoris(false);
 
@@ -204,37 +204,37 @@ function MainFormHeadder() {
           ></ArrowLeft>
         </div>
         <div className="  w-full text-center">
-          <Link href={"form/Environment"}>
+          <Link href={"/form/Environmental_Hazards"}>
             <h1 className="hover:bg-blue-400 w-full  py-2.5 ">
               Environmental Hazards
             </h1>
           </Link>
-          <Link href={"form/Poor_Public"}>
+          <Link href={"/form/Poor_Public_Services"}>
             <h1 className="hover:bg-blue-400 w-full  py-2.5 ">
               Poor Public Services
             </h1>
           </Link>
-          <Link href={"form/Public_Employee"}>
+          <Link href={"/form/Public_Employee_Misconduct"}>
             <h1 className="hover:bg-blue-400 w-full  py-2.5">
               Public Employee Misconduct
             </h1>
           </Link>
-          <Link href={"form/Corruption"}>
+          <Link href={"/form/Corruption_and_Bribery"}>
             <h1 className="hover:bg-blue-400 w-full  py-2.5 ">
               Corruption & Bribery
             </h1>
           </Link>
-          <Link href={"form/Illegal"}>
+          <Link href={"/form/Illegal_Constructions"}>
             <h1 className="hover:bg-blue-400 w-full  py-2.5 ">
               Illegal Constructions
             </h1>
           </Link>
-          <Link href={"form/Infrastructure"}>
+          <Link href={"/form/Infrastructure_Issues"}>
             <h1 className="hover:bg-blue-400 w-full  py-2.5 ">
               Infrastructure Issues
             </h1>
           </Link>
-          <Link href={"form/Crime"}>
+          <Link href={"/form/Crime"}>
             <h1 className="hover:bg-blue-400 w-full  py-2.5">
               Crime Reporting
             </h1>
