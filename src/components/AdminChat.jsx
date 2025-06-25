@@ -48,19 +48,19 @@ function AdminChat() {
   };
 
   return (
-    <div className="bg-[#01356A] min-h-screen flex items-center justify-center">
+    <div className=" min-h-screen flex items-center justify-center">
       <MainFormHeadder />
-      <div className="w-full max-w-5xl h-[80vh] bg-white rounded-3xl shadow-2xl flex overflow-hidden border-4 border-[#01356A] mt-8">
+      <div className="w-full max-w-7xl h-[80vh] bg-white rounded-3xl shadow-2xl flex overflow-hidden border-1 border-[#01356A] mt-8">
         {/* User List (Tabs) */}
-        <div className="w-1/4 bg-white flex flex-col items-center py-6 px-2 border-r-2 border-[#01356A]">
-          <h2 className="text-[#01356A] text-xl font-bold mb-6 tracking-wide">
+        <div className="w-1/4 bg-white flex flex-col items-center py-6 px-2 border-r-1 border-[#01356A]">
+          <h2 className="text-[#01356A] text-xl font-semibold mb-6 tracking-wide \">
             Users
           </h2>
           <div className="w-full flex-1 overflow-y-auto">
             {users.map((user) => (
               <div
                 key={user.id}
-                className={`w-full mb-2 rounded-xl px-3 py-3 cursor-pointer text-sm font-semibold transition-all duration-150 text-left shadow-sm border-2 flex items-center gap-2 ${
+                className={`w-full mb-2 rounded-md px-3 py-3 cursor-pointer text-sm font-semibold transition-all duration-150 text-left shadow-sm border-2 flex items-center gap-2 ${
                   selectedUserId === user.id
                     ? "bg-[#01356A] text-white border-[#01356A] scale-105"
                     : "bg-[#f1f5fa] text-[#01356A] border-transparent hover:bg-[#e6ecf7] hover:border-[#01356A]"
@@ -75,7 +75,7 @@ function AdminChat() {
         {/* Chat Box */}
         <div className="w-3/4 flex flex-col h-full">
           <div className="flex-shrink-0 border-b border-[#01356A]/30 px-8 py-4 bg-white rounded-tr-3xl">
-            <h2 className="text-[#01356A] text-2xl font-bold text-center">
+            <h2 className="text-[#01356A] text-2xl font-semibold text-center">
               Chat with Admin
             </h2>
           </div>

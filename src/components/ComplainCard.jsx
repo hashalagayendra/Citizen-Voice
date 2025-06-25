@@ -15,10 +15,10 @@ const InfoRow = ({ label, value }) => (
 
 const ComplainCard = ({ data }) => {
   const [modalImg, setModalImg] = useState(null);
+  console.log("parse data", data.C_status);
 
   return (
     <div className="bg-white rounded-xl shadow border border-[#01356A]/30 px-4 py-3 flex flex-col gap-2 w-full mx-auto">
-      {/* Header Row: Title, Status */}
       <div className="flex items-center gap-3 mb-1">
         <div className="flex-1 min-w-0">
           <h2
