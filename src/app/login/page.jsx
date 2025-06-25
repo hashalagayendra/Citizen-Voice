@@ -21,9 +21,12 @@ function page() {
 
   const { data: session, status } = useSession();
   if (status === "authenticated") router.push("/");
-  if (status === "unauthenticated") {
-    toast.error("please login");
-  }
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      toast.error("please login");
+    }
+  }, []);
 
   if (error && !errormessege_haddler) {
     toast.error(error);
