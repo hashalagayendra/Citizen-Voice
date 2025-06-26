@@ -11,6 +11,7 @@ import { useState } from "react";
 import catogoryData from "@/lib/details";
 import { use } from "react";
 import { useEffect } from "react";
+import { signOut } from "next-auth/react";
 
 function page() {
   console.log(catogoryData.Environmental_Hazards.title);
@@ -85,6 +86,14 @@ function page() {
       <MainFormHeadder></MainFormHeadder>
       <div className="   min-h-dvh pt-28 px-12 md:px-0 lg:px-12 bg-[#01356A]">
         <h1 className="text-3xl font-semibold text-white">DashBoard</h1>
+        <div
+          onClick={signOut}
+          className="cursor-pointer py-2 px-5 rounded-md text-white font-semibold bg-red-500 absolute top-17
+                 right-8"
+        >
+          {" "}
+          Logout
+        </div>
         <div className="w-full gap-10 flex mt-8  rounded-3xl shadow-2xl  mb-4">
           <div
             onClick={() => {
