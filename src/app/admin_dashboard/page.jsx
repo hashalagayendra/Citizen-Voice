@@ -59,14 +59,27 @@ function page() {
     }
   }
 
-  useEffect(async () => {
-    try {
-      const compains = await axios.get("/api/adminActions");
-      setComplainCardDetails(compains.data.data);
-    } catch (e) {
-      console.error("Error fetching data:", e);
-    }
-  }, []);
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchData = async () => {
+      try {
+        const compains = await axios.get("/api/adminActions");
+        if (isMounted) {
+          setComplainCardDetails(compains.data.data);
+        }
+      } catch (e) {
+        console.error("Error fetching data:", e);
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [OpenCompainview]);
+
   return (
     <div className=" bg-[#01356A]">
       <MainFormHeadder></MainFormHeadder>

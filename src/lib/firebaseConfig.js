@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBxYJoOT9-L3xMBtLvk8lbp1cVFdbu20ew",
-  authDomain: "citizen-voice-54940.firebaseapp.com",
-  projectId: "citizen-voice-54940",
-  storageBucket: "citizen-voice-54940.firebasestorage.app",
-  messagingSenderId: "937162896099",
-  appId: "1:937162896099:web:31c77e3570abb847b90bd6",
-  measurementId: "G-EBMQGV8JWN",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
