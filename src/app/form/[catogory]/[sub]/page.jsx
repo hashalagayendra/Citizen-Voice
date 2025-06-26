@@ -62,7 +62,7 @@ export default function Page() {
             className="[&>div]:bg-[#FFD21E] bg-white"
           />
         </div>
-        <h1>Current Page Count: {pageCount}</h1>
+        {/* <h1>Current Page Count: {pageCount}</h1> */}
 
         {valid_form()}
       </div>

@@ -12,7 +12,7 @@ import { se } from "date-fns/locale";
 import { capitalize } from "@mui/material";
 import { usePathname } from "next/navigation";
 
-function MainFormHeadder() {
+function MainFormHeadder({ scrole }) {
   const [mobileMenu, setmobileMenu] = useState(false);
   const [mobileCatogoris, setmobileCatogoris] = useState(false);
   const [userimage, setuserimage] = useState();
@@ -94,9 +94,20 @@ function MainFormHeadder() {
             </div>
           </div>
 
-          <h1>Complains</h1>
+          {session && (
+            <h1
+              onClick={() => {
+                scrole();
+              }}
+            >
+              Complains
+            </h1>
+          )}
 
-          <h1 onClick={signOut}>Languages</h1>
+          <Link href={"/user_dashboard"}>
+            {" "}
+            <h1>DashBoard</h1>
+          </Link>
         </div>
 
         {pathname === "/login" ? (

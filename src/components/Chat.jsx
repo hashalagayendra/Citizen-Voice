@@ -157,7 +157,7 @@ export default function Chat() {
   //   const handleSend = activeTab === "admin" ? handleAdminSend : handleAiSend;
 
   return (
-    <div className="max-w-l  max-sm:w-full  w-full  mx-auto mt-3 p-0 border border-gray-200 rounded-2xl bg-gradient-to-br from-blue-50 to-white shadow-xl flex flex-col h-[70vh]">
+    <div className=" z-50  max-w-l  max-sm:w-full  w-full  mx-auto mt-3 p-0 border border-gray-200 rounded-2xl bg-gradient-to-br from-blue-50 to-white shadow-xl flex flex-col h-[70vh]">
       {/* Tab Switcher */}
 
       <div className="flex justify-center  ">

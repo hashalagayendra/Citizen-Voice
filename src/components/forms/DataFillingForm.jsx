@@ -33,6 +33,8 @@ function DataFillingForm() {
   const { uplodedFiles, setuplodedFiles } = useGlobalStore();
   const { uploadedImageUrls, setuploadedImageUrls } = useGlobalStore();
 
+  const [uploadLoarding, setuploadLoarding] = useState(false);
+
   const uploadImagesToCloudinary = async () => {
     try {
       const urls = [];
@@ -111,11 +113,13 @@ function DataFillingForm() {
           <Button
             className={"md:text-base text-sm"}
             onClick={async () => {
+              setuploadLoarding(true);
               await uploadImagesToCloudinary();
               await setPageCount(pageCount + 1);
+              setuploadLoarding(false);
             }}
           >
-            Continue
+            {uploadLoarding ? "Wait..." : "Continue"}
           </Button>
         </div>
       </div>

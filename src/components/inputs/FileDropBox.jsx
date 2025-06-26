@@ -66,10 +66,10 @@ export default function FileDropBox() {
         </div>
       </div>
 
-      <div
+      {/* <div
         // onClick={uploadImagesToCloudinary}
         className="w-10 h-10 bg-red-500"
-      ></div>
+      ></div> */}
     </div>
   );
 }

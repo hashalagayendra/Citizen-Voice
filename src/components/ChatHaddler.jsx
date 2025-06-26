@@ -7,7 +7,7 @@ import { MessageCircle } from "lucide-react";
 function ChatHaddler() {
   const [chatopen, setChatOpen] = useState(false);
   return (
-    <div>
+    <div className="z-50 fixed">
       {chatopen ? (
         <div className="max-sm:w-full  fixed max-sm:bottom-0 bottom-10 max-sm:right-0 right-10 w-lg  flex flex-col items-end ">
           <div

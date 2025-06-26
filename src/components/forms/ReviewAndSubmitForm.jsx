@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useGlobalStore from "@/store/useGlobalStore";
 import { Button } from "@/components/ui/button";
 import { useParams } from "next/navigation";
@@ -7,6 +7,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 
 function ReviewAndSubmitForm() {
+  const [uploadLoarding, setuploadLoarding] = useState(false);
   const { data: session, status } = useSession();
   if (status === "loading") return <p>Loading...</p>;
   if (status === "unauthenticated") {
@@ -142,11 +143,13 @@ function ReviewAndSubmitForm() {
         </Button>
         <Button
           onClick={async () => {
+            setuploadLoarding(true);
             await uploaddata();
             await setPageCount(pageCount + 1);
+            setuploadLoarding(false);
           }}
         >
-          Continue
+          {uploadLoarding ? "Wait..." : "Continue"}
         </Button>
       </div>
     </div>

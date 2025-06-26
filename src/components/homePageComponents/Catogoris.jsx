@@ -1,24 +1,19 @@
 import React from "react";
+import { Nav } from "react-day-picker";
+import Link from "next/link";
+import { TreePine } from "lucide-react";
+import { TrafficCone } from "lucide-react";
+import { Building2 } from "lucide-react";
+import { HandCoins } from "lucide-react";
+import { UserRoundX } from "lucide-react";
+import { Droplet } from "lucide-react";
 
 const categories = [
   {
-    icon: (
-      <svg
-        className="w-8 h-8 mx-auto mb-2"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0v10m0 0l3-3m-3 3l-3-3"
-        />
-      </svg>
-    ),
+    icon: <TreePine></TreePine>,
     title: "Environmental Hazards",
     desc: "Report issues like pollution, illegal dumping, and deforestation.",
+    navigation: "/form/Environmental_Hazards",
   },
   {
     icon: (
@@ -38,97 +33,37 @@ const categories = [
     ),
     title: "Crime Reporting",
     desc: "Report theft, assault, vandalism, or suspicious activity.",
+    navigation: "/form/Crime",
   },
   {
-    icon: (
-      <svg
-        className="w-8 h-8 mx-auto mb-2"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M3 10h18M3 14h18M5 6h14M5 18h14"
-        />
-      </svg>
-    ),
+    icon: <TrafficCone></TrafficCone>,
     title: "Infrastructure Issues",
     desc: "Report issues like potholes, bridge damage, and broken streetlights.",
+    navigation: "/form/Infrastructure_Issues",
   },
   {
-    icon: (
-      <svg
-        className="w-8 h-8 mx-auto mb-2"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3" />
-      </svg>
-    ),
-    title: "Water & Sanitation",
-    desc: "Report water leaks, sanitation, and drainage problems.",
+    icon: <Building2></Building2>,
+    title: "Illegal Constructions",
+    desc: "Report unauthorized buildings or structure violations.",
+    navigation: "/form/Illegal_Constructions",
   },
   {
-    icon: (
-      <svg
-        className="w-8 h-8 mx-auto mb-2"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M17 9V7a5 5 0 00-10 0v2M5 9h14v10a2 2 0 01-2 2H7a2 2 0 01-2-2V9z"
-        />
-      </svg>
-    ),
-    title: "Public Health",
-    desc: "Report health hazards, disease outbreaks, and unsafe conditions.",
+    icon: <HandCoins></HandCoins>,
+    title: "Corruption & Bribery",
+    desc: "Report acts of bribery, misuse of public funds, or corruption.",
+    navigation: "/form/Corruption_and_Bribery",
   },
   {
-    icon: (
-      <svg
-        className="w-8 h-8 mx-auto mb-2"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 20l9-5-9-5-9 5 9 5z"
-        />
-      </svg>
-    ),
-    title: "Road Safety",
-    desc: "Report accidents, unsafe crossings, and road hazards.",
+    icon: <UserRoundX></UserRoundX>,
+    title: "Public Employee Misconduct",
+    desc: "Report negligence, abuse of power, or unethical behavior by officials.",
+    navigation: "/form/Public_Employee_Misconduct",
   },
   {
-    icon: (
-      <svg
-        className="w-8 h-8 mx-auto mb-2"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 8c-1.657 0-3 1.343-3 3 0 1.657 1.343 3 3 3s3-1.343 3-3c0-1.657-1.343-3-3-3z"
-        />
-      </svg>
-    ),
-    title: "Other",
-    desc: "Report any other issues affecting your community.",
+    icon: <Droplet></Droplet>,
+    title: "Poor Public Services",
+    desc: "Report delays, lack of  poor quality in public facilities like waste collection or customer service.",
+    navigation: "/form/Poor_Public_Services",
   },
 ];
 
@@ -146,16 +81,16 @@ function Catogoris() {
       </div>
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {categories.map((cat, idx) => (
-          <div
-            key={idx}
-            className="bg-[#0A3761] rounded-xl shadow-md p-6 flex flex-col items-center text-white min-h-[220px] transition-transform hover:scale-105"
-          >
-            {cat.icon}
-            <h3 className="text-lg font-semibold mb-2 text-center">
-              {cat.title}
-            </h3>
-            <p className="text-sm text-center opacity-80">{cat.desc}</p>
-          </div>
+          <Link key={idx} href={cat.navigation}>
+            <div className="bg-[#0A3761] rounded-xl shadow-md p-6 flex flex-col items-center text-white min-h-[220px] transition-transform hover:scale-105">
+              {cat.icon}
+
+              <h3 className="text-lg font-semibold mb-2 text-center">
+                {cat.title}
+              </h3>
+              <p className="text-sm text-center opacity-80">{cat.desc}</p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

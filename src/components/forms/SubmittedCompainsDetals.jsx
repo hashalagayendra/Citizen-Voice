@@ -77,7 +77,9 @@ function SubmittedCompainsDetals() {
           </PDFDownloadLink>
 
           <div className="px-4 py-3  ring-2 ring-[#01356A] bg-[#01356A] rounded w-fit">
-            <h1 className="text-white font-semibold">Report Similar Issue</h1>
+            <Link href={`/form/${main}`}>
+              <h1 className="text-white font-semibold">Report Similar Issue</h1>
+            </Link>
           </div>
         </div>
       </div>

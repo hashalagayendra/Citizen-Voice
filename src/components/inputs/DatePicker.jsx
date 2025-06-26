@@ -55,7 +55,7 @@ export default function DatePicker() {
         </PopoverContent>
       </Popover>
 
-      <h1> date is {date ? format(date, "PPP") : "sdsd"}</h1>
+      {/* <h1> date is {date ? format(date, "PPP") : "sdsd"}</h1> */}
     </div>
   );
 }

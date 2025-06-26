@@ -52,7 +52,7 @@ function page() {
             className="[&>div]:bg-[#FFD21E] bg-white"
           />
         </div>
-        <h1>Current Page Count: {pageCount}</h1>
+        {/* <h1>Current Page Count: {pageCount}</h1> */}
         <div>
           <div className="bg-white w-full px-12 rounded-b-2xl py-6">
             <h1 className="text-xl md:text-2xl  text-[#01356A] mb-2 ">
@@ -80,7 +80,6 @@ function page() {
 
             <div className="w-full flex justify-center mt-8 md:text-base text-xs">
               <div className={`${!navigateURL && "disabled:"} `}>
-                {" "}
                 <Link
                   href={`/form/${SelectedcatogoryName}/${
                     navigateURL ? navigateURL : ""

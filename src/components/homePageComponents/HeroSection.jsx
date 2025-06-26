@@ -4,6 +4,8 @@ import img1 from "@/assests/image1.jpg";
 import img2 from "@/assests/2image.jpg";
 import img3 from "@/assests/3image.jpg";
 import img5 from "@/assests/5image.jpg";
+import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const slides = [
   {
@@ -24,7 +26,9 @@ const slides = [
   },
 ];
 
-function HeroSection() {
+function HeroSection({ scrole }) {
+  const router = useRouter();
+  const { data: session, status } = useSession();
   const [current, setCurrent] = useState(0);
 
   const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
@@ -37,7 +41,7 @@ function HeroSection() {
   }, []);
 
   return (
-    <section className="relative bg-amber-400 w-full h-full flex items-center justify-center ">
+    <section className="z-30 relative  w-full h-full flex items-center justify-center ">
       {/* Slide Images */}
       {slides.map((slide, idx) => (
         <img
@@ -62,7 +66,16 @@ function HeroSection() {
           Help improve our community by submitting complaints to local
           authorities. Together, we can make our city better.
         </p>
-        <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded shadow transition text-center">
+        <button
+          onClick={() => {
+            if (status === "authenticated") {
+              scrole();
+            } else {
+              router.push("/login");
+            }
+          }}
+          className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded shadow transition text-center"
+        >
           <span className="inline-flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"

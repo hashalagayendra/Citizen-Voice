@@ -1,3 +1,4 @@
+"use client";
 import MainFormHeadder from "@/components/MainFormHeadder";
 import Image from "next/image";
 import Chat from "@/components/Chat";
@@ -9,18 +10,43 @@ import HowItsWork from "@/components/homePageComponents/HowItsWork";
 import RecentlyResolutionComplaints from "@/components/homePageComponents/Recently_Resolution_Complaints";
 import EmergencyContacts from "@/components/homePageComponents/EmergencyContacts";
 import ContactUs from "@/components/homePageComponents/ContactUs";
+import { useSession } from "next-auth/react";
+// import { getServerSession } from "next-auth";
+// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export default function Home() {
+  const { data: session, status } = useSession();
+  if (status === "authenticated") {
+    console.log("session data", session);
+  }
+
+  function scrollToComplaintsSection() {
+    document
+      .getElementById("complaints-section")
+      ?.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <div className="  h-[calc(100vh-64px)] w-full bg-[#01356B]  overflow-x-hidden-hidden ">
-      <MainFormHeadder></MainFormHeadder>
+      <MainFormHeadder
+        className="z-10"
+        scrole={scrollToComplaintsSection}
+      ></MainFormHeadder>
       <div className="mt-16 h-[calc(100vh-64px)] ">
-        <ChatHaddler></ChatHaddler>
-        <div className="w-full h-full bg-red-400">
-          <HeroSection></HeroSection>
+        {status === "authenticated" && (
+          <ChatHaddler className="z-50 absolute"></ChatHaddler>
+        )}
+
+        <div className="w-full h-full ">
+          <HeroSection scrole={scrollToComplaintsSection}></HeroSection>
         </div>
 
-        <Catogoris></Catogoris>
+        {status === "authenticated" && (
+          <div id="complaints-section">
+            <Catogoris></Catogoris>
+          </div>
+        )}
+
         <HowItsWork></HowItsWork>
         <RecentlyResolutionComplaints></RecentlyResolutionComplaints>
         <EmergencyContacts></EmergencyContacts>

@@ -4,7 +4,7 @@ import MainFormHeadder from "@/components/MainFormHeadder";
 import UserDashBoardCompainCard from "@/components/UserDashBoardCompainCard";
 import UserDashBoardProgressCard from "@/components/UserDashBoardProgressCard";
 import React, { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import ChatHaddler from "@/components/ChatHaddler";
@@ -82,7 +82,20 @@ function page() {
   return (
     <div className=" bg-[#01356A]">
       <MainFormHeadder></MainFormHeadder>
+
       <div className="h-full mt-16 py-7 px-12 md:px-0 lg:px-12">
+        <div className="w-full ">
+          {" "}
+          <h1 className="text-3xl font-semibold text-white">DashBoard</h1>
+        </div>
+        <div
+          onClick={signOut}
+          className="cursor-pointer py-2 px-5 rounded-md text-white font-semibold bg-red-500 absolute top-17
+         right-8"
+        >
+          {" "}
+          Logout
+        </div>
         <h1>{responsedata?.MainTitle}</h1>
         <h1 className="text-3xl text-white font-bold my-14 ml-5">
           {responsedata && responsedata.lengths}
