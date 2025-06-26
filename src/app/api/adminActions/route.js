@@ -27,9 +27,9 @@ export async function POST(request) {
     // Simulate saving admin action
     console.log("Admin action received:", body);
 
-    if (!body.action) {
-      throw new Error("Invalid data: action and timestamp are required");
-    }
+    // if (!body.action) {
+    //   throw new Error("Invalid data: action and timestamp are required");
+    // }
 
     if (body.action === "Search_by_Catogory") {
       console.log("run indide");
