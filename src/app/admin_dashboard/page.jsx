@@ -11,9 +11,23 @@ import { useState } from "react";
 import catogoryData from "@/lib/details";
 import { use } from "react";
 import { useEffect } from "react";
-import { signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 function page() {
+  const router = useRouter();
+  const { data: session, status } = useSession();
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/");
+    }
+
+    if (status === "authenticated" && session?.user?.role !== "user") {
+      router.push("/admin_dashboard");
+    }
+  }, [status, router]);
+
   console.log(catogoryData.Environmental_Hazards.title);
   const [OpenCompainview, setOpenCompainview] = useState(true);
   const [ComplainCardDetails, setComplainCardDetails] = useState([]);
