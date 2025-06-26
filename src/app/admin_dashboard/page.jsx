@@ -23,8 +23,8 @@ function page() {
       router.push("/");
     }
 
-    if (status === "authenticated" && session?.user?.role !== "user") {
-      router.push("/admin_dashboard");
+    if (status === "authenticated" && session?.user?.role !== "admin") {
+      router.push("/user_dashboard");
     }
   }, [status, router]);
 
