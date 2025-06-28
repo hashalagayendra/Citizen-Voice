@@ -70,7 +70,7 @@ function DataFillingForm() {
   }, [uplodedFiles, uploadedImageUrls]);
   return (
     <div>
-      <div className="bg-white w-full px-12 rounded-b-2xl py-6">
+      <div className="bg-white w-full px-12 max-sm:px-4 rounded-b-2xl py-6">
         <h1 className="text-xl md:text-2xl text-[#01356A] mb-6 ">
           Provide details about the issue
         </h1>

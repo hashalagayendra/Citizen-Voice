@@ -57,12 +57,12 @@ function HeroSection({ scrole }) {
       <div className="absolute w-full inset-0 bg-[#01356B]/40 z-20" />
       {/* Content */}
       <div className="relative z-30 flex flex-col items-start max-md:items-center max-w-2xl px-8  w-full max-md:text-center  max-md:w-fit md:max-w-5xl">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight w-full">
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight w-full max-sm:text-3xl">
           Report Problems.
           <br />
           Get Solutions.
         </h1>
-        <p className="text-lg md:text-xl text-white mb-6 md:max-w-2xl">
+        <p className="text-lg max-sm:text-base md:text-xl text-white mb-6 md:max-w-2xl">
           Help improve our community by submitting complaints to local
           authorities. Together, we can make our city better.
         </p>
@@ -74,7 +74,7 @@ function HeroSection({ scrole }) {
               router.push("/login");
             }
           }}
-          className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded shadow transition text-center"
+          className="bg-yellow-400 cursor-pointer  hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded shadow transition text-center"
         >
           <span className="inline-flex items-center gap-2">
             <svg

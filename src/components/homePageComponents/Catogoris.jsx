@@ -71,10 +71,10 @@ function Catogoris() {
   return (
     <div className="w-full px-2 py-8 overflow-x-hidden">
       <div className="text-center my-8 self-justify-center flex flex-col items-center gap-4 ">
-        <h1 className="text-3xl text-[#01356B] font-bold">
+        <h1 className="max-sm:text-lg text-3xl text-[#01356B] font-bold">
           Quick Complaint Shortcuts
         </h1>
-        <p className="max-w-2xl text-gray-500">
+        <p className="max-w-2xl max-sm:text-sm text-gray-500">
           Select a category to quickly file a complaint. Our system will guide
           you through the specific details needed for each type
         </p>
@@ -82,10 +82,10 @@ function Catogoris() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {categories.map((cat, idx) => (
           <Link key={idx} href={cat.navigation}>
-            <div className="bg-[#0A3761] rounded-xl shadow-md p-6 flex flex-col items-center text-white min-h-[220px] transition-transform hover:scale-105">
+            <div className="bg-[#0A3761] rounded-xl shadow-md p-6 flex flex-col items-center text-white max-sm:min-h-[150px] min-h-[220px] transition-transform hover:scale-105">
               {cat.icon}
 
-              <h3 className="text-lg font-semibold mb-2 text-center">
+              <h3 className="text-lg font-semibold max-sm:text-sm mb-2 text-center">
                 {cat.title}
               </h3>
               <p className="text-sm text-center opacity-80">{cat.desc}</p>

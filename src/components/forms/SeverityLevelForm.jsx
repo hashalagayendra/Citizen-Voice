@@ -10,7 +10,7 @@ function SeverityLevelForm() {
     console.log(Severity_Level);
   }, [Severity_Level]);
   return (
-    <div className="bg-white w-full px-12 rounded-b-2xl py-6">
+    <div className="bg-white w-full px-12 max-sm:px-4 rounded-b-2xl py-6">
       <h1 className="md:text-2xl text-xl  text-[#002B5A]">
         How severe is the issue?
       </h1>

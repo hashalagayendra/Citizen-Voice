@@ -184,7 +184,7 @@ export default function Chat() {
           Chat with AI Bot
         </button>
       </div>
-      <h2 className="text-2xl font-bold mb-2 text-center pt-2 text-[#01356A] drop-shadow">
+      <h2 className="text-2xl font-bold mb-2 text-center pt-2 text-[#01356A] ">
         {activeTab === "admin" ? "Chat with Admin" : "Chat with AI Bot"}
       </h2>
       {/* Chat Area */}

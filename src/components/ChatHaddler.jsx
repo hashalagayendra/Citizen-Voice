@@ -38,9 +38,7 @@ function ChatHaddler() {
             {/* Icon */}
             <MessageCircle className="w-9 h-9 text-white drop-shadow-xl mb-1 z-10" />
             {/* Button text */}
-            <span className="text-sm text-white font-bold tracking-wide z-10 drop-shadow-md">
-              Chat
-            </span>
+            <span className="text-sm text-white font-bold ">Chat</span>
           </button>
           <span className="mt-3 text-white text-base font-semibold drop-shadow-lg select-none tracking-wide bg-gradient-to-r from-blue-700 via-blue-900 to-indigo-900 px-3 py-1 rounded-xl shadow-md border border-blue-400/30">
             Chat with Admin

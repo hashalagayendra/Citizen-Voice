@@ -93,7 +93,7 @@ function Page() {
         center={[6.9271, 79.8612]}
         zoom={13}
         style={{ height: "100%", width: "100%" }} // Increased height for visibility
-        className="rounded-3xl"
+        className="max-md:rounded-t-lg  max-md:rounded-b-none rounded-3xl"
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

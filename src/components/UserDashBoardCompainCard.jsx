@@ -11,29 +11,29 @@ function UserDashBoardCompainCard({ MainTitle, SubTitle, Location, Severity }) {
       </div>
       <h1 className="text-gray-500 font-semibold">2023-10-15</h1>
 
-      <div className="flex flex-col  gap-3">
-        <div className="flex gap-6 justify-between">
+      <div className="flex flex-col    gap-4  ">
+        <div className="flex  justify-between flex-col items-center gap-2">
           <h1 className="font-semibold">Catogory</h1>
           <h1 className="text-sm">{MainTitle}</h1>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex  justify-between flex-col items-center gap-2">
           <h1 className="font-semibold">Title</h1>
           <h1 className="text-sm">{SubTitle}</h1>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex  justify-between flex-col items-center gap-2">
           <h1 className="font-semibold">Location</h1>
-          <h1 className="text-sm">{Location}</h1>
+          <h1 className="text-sm text-center">{Location}</h1>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex  justify-between flex-col items-center gap-2">
           <h1 className="font-semibold">Severity</h1>
           <h1>{Severity}</h1>
         </div>
       </div>
 
-      <div className="flex   justify-end mt-5">
+      <div className="flex  justify-between flex-col items-center gap-2">
         <div className="bg-[#01356A] py-2 px-4 rounded">
           <h1 className="text-white">View details</h1>
         </div>

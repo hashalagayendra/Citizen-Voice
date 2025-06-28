@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { se } from "date-fns/locale";
 import { capitalize } from "@mui/material";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 function MainFormHeadder({ scrole }) {
   const [mobileMenu, setmobileMenu] = useState(false);
@@ -20,6 +21,7 @@ function MainFormHeadder({ scrole }) {
   const { data: session, status } = useSession();
   // console.log(session);
   // console.log(pathname);
+  const router = useRouter();
 
   const namePart = session?.user.email.split("@")[0];
 
@@ -34,20 +36,20 @@ function MainFormHeadder({ scrole }) {
       <Link href={"/"}>
         <div className=" flex items-center gap-3 pl-4 ">
           <img src={logo.src} alt="" className="w-[42px] h-[42px] " />
-          <h1 className="text-white font-bold w-36 whitespace-nowrap ">
+          <h1 className="text-white font-bold w-36 whitespace-nowrap  max-sm:text-sm">
             Citizen Voice
           </h1>
         </div>
       </Link>
-      <div className="  h-full w-full flex items-center justify-end md:gap-6 gap-4 pr-6 ">
+      <div className="  h-full w-full flex items-center justify-end md:gap-6 gap-2 pr-6 ">
         <div className=" w-fit   md:gap-6 gap-3 text-sm md:text-base font-semibold text-white hidden sm:flex">
           <Link href={"/"}>
             {" "}
             <h1>Home</h1>
           </Link>
-          <h1>About</h1>
+          <h1 className="cursor-pointer">About</h1>
           <div className=" relative group">
-            <h1 className=" ">Catogoris</h1>
+            <h1 className=" cursor-pointer">Catogoris</h1>
             <div className="absolute  pb-5 w-xs right-1/2 translate-x-1/2 font-normal   hidden group-hover:block hover:block ">
               <div className="h-[20px]  w-full ">{""}</div>
               <div
@@ -93,9 +95,9 @@ function MainFormHeadder({ scrole }) {
               </div>
             </div>
           </div>
-
           {session && (
             <h1
+              className="cursor-pointer"
               onClick={() => {
                 scrole();
               }}
@@ -103,11 +105,22 @@ function MainFormHeadder({ scrole }) {
               Complains
             </h1>
           )}
+          {/* <Link onCan href={"/user_dashboard"}> */}{" "}
+          <h1
+            className="cursor-pointer"
+            onClick={() => {
+              status === "authenticated" &&
+                session?.user?.role === "user" &&
+                router.push("/user_dashboard");
 
-          <Link href={"/user_dashboard"}>
-            {" "}
-            <h1>DashBoard</h1>
-          </Link>
+              status === "authenticated" &&
+                session?.user?.role === "admin" &&
+                router.push("/admin_dashboard");
+            }}
+          >
+            DashBoard
+          </h1>
+          {/* </Link> */}
         </div>
 
         {pathname === "/login" ? (
@@ -135,14 +148,14 @@ function MainFormHeadder({ scrole }) {
         )}
 
         <Link href={"/user_dashboard"} className={`${!session && "hidden"}`}>
-          <div className="flex gap-4 items-center  ">
+          <div className="flex max-sm:gap-2 gap-4 items-center  ">
             <Avatar className={"w-[35] h-[35] "}>
               <AvatarImage src={session?.pic} />
               <AvatarFallback>
                 {session ? capitalize(session.email[0]) : ""}
               </AvatarFallback>
             </Avatar>
-            <h1 className="text-white font-semibold">
+            <h1 className="text-white font-semibold max-sm:text-sm">
               {session?.user.name ? session.user.name : namePart}
             </h1>
           </div>
@@ -184,11 +197,28 @@ function MainFormHeadder({ scrole }) {
         >
           Catogoris
         </h1>
-        <h1 className="hover:bg-blue-400 w-full text-center  py-2.5 ">
+        <h1
+          className="hover:bg-blue-400 w-full text-center  py-2.5 "
+          onClick={() => {
+            scrole();
+          }}
+        >
           Complains
         </h1>
-        <h1 className="hover:bg-blue-400 w-full text-center  py-2.5 ">
-          Languages
+
+        <h1
+          className=" hover:bg-blue-400 w-full text-center  py-2.5"
+          onClick={() => {
+            status === "authenticated" &&
+              session?.user?.role === "user" &&
+              router.push("/user_dashboard");
+
+            status === "authenticated" &&
+              session?.user?.role === "admin" &&
+              router.push("/admin_dashboard");
+          }}
+        >
+          Dash Board
         </h1>
       </div>
 

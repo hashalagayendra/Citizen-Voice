@@ -26,7 +26,7 @@ function LocationDetails({ setOpen }) {
   }, [selected_Location_details]);
   return (
     <div className="w-full px-5  h-full flex flex-col    justify-start  ">
-      <div className="h-full text-xl  mt-5 flex flex-col gap-4">
+      <div className="h-full text-xl   mt-5 flex flex-col gap-4">
         <div className="detail_container bg-blue-200/30 p-3 rounded-md">
           <div className="flex gap-4">
             {" "}
@@ -34,14 +34,14 @@ function LocationDetails({ setOpen }) {
             <h1 className="text-sm">Street Address</h1>
           </div>
 
-          <h1 className="ml-10 text-sm font-bold">
+          <h1 className="ml-10 text-sm  max-md:text-xs   max-md:font-medium font-bold">
             {addressmaker(selected_Location_details?.display_name)}
 
             {}
           </h1>
         </div>
 
-        <div className="flex  justify-between gap-2">
+        <div className="flex max-sm:hidden justify-between gap-2">
           <div className="detail_container bg-blue-200/30 p-3 rounded-md flex-1">
             <div className="flex gap-4">
               {" "}
@@ -56,7 +56,7 @@ function LocationDetails({ setOpen }) {
             </h1>
           </div>
 
-          <div className="detail_container bg-blue-200/30 p-3 rounded-md flex-1">
+          <div className="detail_container max-sm:hidden bg-blue-200/30 p-3 rounded-md flex-1">
             <div className="flex gap-4">
               {" "}
               <Map className="text-blue-500"></Map>
@@ -69,7 +69,7 @@ function LocationDetails({ setOpen }) {
           </div>
         </div>
 
-        <div className="flex justify-between gap-2">
+        <div className="flex justify-between max-sm:hidden gap-2">
           <div className="detail_container bg-blue-200/30 p-3 rounded-md flex-1">
             <div className="flex gap-4">
               {" "}
@@ -82,7 +82,7 @@ function LocationDetails({ setOpen }) {
             </h1>
           </div>
 
-          <div className="detail_container bg-blue-200/30 p-3 rounded-md flex-1">
+          <div className="detail_container max-sm:hidden bg-blue-200/30 p-3 rounded-md flex-1">
             <div className="flex gap-4">
               {" "}
               <Navigation className="text-blue-500"></Navigation>

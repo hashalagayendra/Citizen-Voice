@@ -75,7 +75,7 @@ function ReviewAndSubmitForm() {
   }
 
   return (
-    <div className="bg-white w-full px-12 rounded-b-2xl py-6">
+    <div className="bg-white w-full px-12 max-sm:px-4 rounded-b-2xl py-6">
       <h1 className="text-xl md:text-2xl text-[#01356A] mb-2 ">
         {" "}
         Review And Submit Form
@@ -85,37 +85,53 @@ function ReviewAndSubmitForm() {
       </p>
 
       <div className="w-full rounded-lg ring-2 ring-gray-400 mt-9  px-6 py-6">
-        <h1 className="text-lg font-bold text-[#01356A] mb-6 ">
+        <h1 className="text-lg font-bold text-[#01356A] mb-6  text-center">
           Complaint Details
         </h1>
-        <div className="flex flex-col gap-2">
-          <div className="flex hover:bg-blue-100/30 py-2  rounded">
-            <h1 className="w-1/2 text-gray-600">Category</h1>
-            <h1 className="text-gray-800 font-semibold">
+        <div className="flex flex-col max-md:gap-1 gap-2">
+          <div className="flex hover:bg-blue-100/30 py-2 flex-col items-center rounded">
+            <h1 className=" text-gray-600 max-md:text-base text-xl">
+              Category
+            </h1>
+            <h1 className="text-gray-800 max-md:text-sm font-semibold ">
               {SelectedcatogoryName}
             </h1>
           </div>
 
-          <div className="flex hover:bg-blue-100/30 py-2  rounded">
-            <h1 className="w-1/2 text-gray-600">Sub Category</h1>
-            <h1 className="text-gray-800 font-semibold">{SubcatogoryName}</h1>
+          <div className="flex hover:bg-blue-100/30 py-2 flex-col items-center  rounded">
+            <h1 className=" text-gray-600 text-xl max-md:text-base">
+              Sub Category
+            </h1>
+            <h1 className="text-gray-800 font-semibold max-md:text-sm">
+              {SubcatogoryName}
+            </h1>
           </div>
-          <div className="flex hover:bg-blue-100/30 py-2  rounded">
-            <h1 className="w-1/2 text-gray-600">Description</h1>
-            <h1 className="text-gray-800 ">{description}</h1>
+          <div className="flex hover:bg-blue-100/30 py-2  flex-col items-center rounded">
+            <h1 className=" text-gray-600 text-xl max-md:text-base">
+              Description
+            </h1>
+            <h1 className="text-gray-800 max-md:text-sm ">{description}</h1>
           </div>
-          <div className="flex hover:bg-blue-100/30 py-2  rounded">
-            <h1 className="w-1/2 text-gray-600">Location</h1>
-            <h1 className="text-gray-800 ">{tempory_address}</h1>
+          <div className="flex hover:bg-blue-100/30 py-2 flex-col items-center rounded">
+            <h1 className=" text-gray-600 text-xl max-md:text-base">
+              Location
+            </h1>
+            <h1 className="text-gray-800 text-center max-w-2xl  max-md:text-sm ">
+              {tempory_address}
+            </h1>
           </div>
 
-          <div className="flex hover:bg-blue-100/30 py-2  rounded">
-            <h1 className="w-1/2 text-gray-600">Severity</h1>
-            <h1 className="text-gray-800 ">{Severity_Level}</h1>
+          <div className="flex hover:bg-blue-100/30 py-2 flex-col items-center rounded">
+            <h1 className=" text-gray-600 text-xl max-md:text-base">
+              Severity
+            </h1>
+            <h1 className="text-gray-800  max-md:text-sm">{Severity_Level}</h1>
           </div>
-          <div className="flex hover:bg-blue-100/30 py-2  rounded">
-            <h1 className="w-1/2 text-gray-600">Evidence Files</h1>
-            <h1 className="text-gray-800 ">
+          <div className="flex hover:bg-blue-100/30 py-2 flex-col items-center rounded">
+            <h1 className=" text-gray-600 text-xl max-md:text-base">
+              Evidence Files
+            </h1>
+            <h1 className="text-gray-800  max-md:text-sm">
               {`${
                 uploadedImageUrls
                   ? "Number of Files " + uploadedImageUrls.length
@@ -123,9 +139,11 @@ function ReviewAndSubmitForm() {
               }`}
             </h1>
           </div>
-          <div className="flex hover:bg-blue-100/30 py-2  rounded">
-            <h1 className="w-1/2 text-gray-600">Submission Method</h1>
-            <h1 className="text-gray-800 ">
+          <div className="flex hover:bg-blue-100/30 py-2  flex-col items-center rounded">
+            <h1 className=" text-gray-600 text-xl max-md:text-base">
+              Submission Method
+            </h1>
+            <h1 className="text-gray-800 max-md:text-sm ">
               {(Submission_Method === "without_id" && "Report Anonimusly") ||
                 (Submission_Method === "with_id" && "Report With ID")}
             </h1>

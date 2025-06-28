@@ -35,7 +35,7 @@ export default function layout({ children }) {
               and future generations.
             </p>
           </div>
-          <div className=" max-w-sm">
+          {/* <div className=" max-w-sm">
             <p className="font-semibold mb-5">Contact Us</p>
             <p>
               Indira Paryavaran Bhawan Jor <br></br>Bagh Road, New Delhi -
@@ -44,7 +44,7 @@ export default function layout({ children }) {
               Email: complaints@epa.gov.in<br></br>
               Phone: 1800-100-4,144
             </p>
-          </div>
+          </div> */}
           <div className="max-w-xs hidden md:block  md:text-start">
             <p className="font-semibold mb-5">Privacy Policy</p>
 

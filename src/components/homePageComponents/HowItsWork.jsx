@@ -24,7 +24,9 @@ export default function HowItsWork() {
   return (
     <section className="bg-[#0A3970] text-white py-10">
       <div className="text-center mb-8">
-        <h2 className="font-bold text-2xl md:text-3xl mb-2">How it works</h2>
+        <h2 className="font-bold text-2xl md:text-3xl mb-2 max-sm:text-2xl">
+          How it works
+        </h2>
         <p className="text-base text-[#c7d6ee]">
           our streamlined process makes it easy to report issues and track their
           resolution

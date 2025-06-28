@@ -12,7 +12,7 @@ function ComplaintSubmissionMethodForm() {
     console.log(Submission_Method);
   }, [Submission_Method]);
   return (
-    <div className="bg-white w-full px-12 rounded-b-2xl py-6">
+    <div className="bg-white w-full px-12 max-sm:px-4 rounded-b-2xl py-6">
       <h1 className="text-xl md:text-2xl text-[#01356A]">
         Complaint Submission Method
       </h1>

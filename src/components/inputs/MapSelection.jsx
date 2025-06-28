@@ -77,18 +77,18 @@ function MapSelection() {
           setOpen(false);
         }}
       >
-        <DrawerContent className="h-screen px-8 ">
-          <DrawerHeader className={"flex justify-between w-full "}>
-            <div className="w-full h-10 flex  text-start">
+        <DrawerContent className="h-screen  max-md:px-0 px-8 ">
+          <DrawerHeader className={"flex  justify-between w-full "}>
+            <div className="w-full h-10 flex max-md:justify-center  text-start">
               <div className="w-1/2  ">
                 {" "}
-                <h1 className="text-2xl text-[#01356A] font-semibold">
+                <h1 className="max-md:text-lg text-2xl text-[#01356A] font-semibold">
                   Select Location
                 </h1>
               </div>
               <div className="w-1/2 text-center">
                 {selected_Location_details && (
-                  <h1 className="text-2xl text-[#01356A] font-semibold">
+                  <h1 className="max-md:hidden text-2xl text-[#01356A] font-semibold">
                     Location Details
                   </h1>
                 )}
@@ -96,7 +96,7 @@ function MapSelection() {
             </div>
           </DrawerHeader>
 
-          <div className="w-full h-3/4 mr-4 flex">
+          <div className="w-full h-3/4 mr-4  flex  max-md:flex-col">
             <div className=" flex-3/5">
               <MapWithNoSSR></MapWithNoSSR>
             </div>

@@ -38,31 +38,39 @@ function SubmittedCompainsDetals() {
     <div>
       <div className="bg-white w-full px-12 rounded-b-2xl py-6">
         <div className="w-full h-full  flex flex-col justify-center items-center gap-7 ">
-          <img src={Done.src} alt="" className="h-32" />
-          <h1 className="text-3xl text-[#01356A] font-semibold text-center">
+          <img src={Done.src} alt="" className="h-32 max-sm:h-24" />
+          <h1 className="text-3xl text-[#01356A] font-semibold text-center max-sm:text-xl">
             Complaint Submitted Successfully!
           </h1>
-          <p className="w-full max-w-[500px] text-center text-gray-400 ">
+          <p className="w-full max-w-[500px] text-center text-gray-400  max-sm:text-sm">
             Thank you for reporting the environmental issue. Your complaint has
             been registered and will be addressed by our team.
           </p>
 
           <div>
-            <h1 className="text-center text-xl text-gray-400">Complaint ID</h1>
-            <h1 className="text-center text-xl text-[#01356A] font-semibold ">
+            <h1 className="text-center text-xl text-gray-400 max-sm:text-base">
+              Complaint ID
+            </h1>
+            <h1 className="text-center text-xl text-[#01356A] font-semibold  max-sm:text-base">
               EPA-743185
             </h1>
           </div>
           <div>
-            <h1 className="text-center text-gray-400 text-lg">
+            <h1 className="text-center text-gray-400 text-lg max-sm:text-base">
               Submission Date
             </h1>
-            <h1 className="text-center text-gray-400 text-lg">5/8/2025</h1>
+            <h1 className="text-center text-gray-400 text-lg max-sm:text-base">
+              5/8/2025
+            </h1>
           </div>
 
           <div>
-            <h1 className="text-center text-gray-400 text-lg">Status</h1>
-            <h1 className="text-center text-green-500 text-lg">Resived</h1>
+            <h1 className="text-center text-gray-400 text-lg max-sm:text-base">
+              Status
+            </h1>
+            <h1 className="text-center text-green-500 text-lg max-sm:text-base">
+              Resived
+            </h1>
           </div>
         </div>
 

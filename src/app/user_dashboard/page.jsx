@@ -83,7 +83,7 @@ function page() {
     <div className=" bg-[#01356A]">
       <MainFormHeadder></MainFormHeadder>
 
-      <div className="h-full mt-16 py-7 px-12 md:px-0 lg:px-12">
+      <div className="h-full mt-16 py-7 px-12 max-md:px-0 ">
         <div className="w-full ">
           {" "}
           <h1 className="text-3xl font-semibold text-white">DashBoard</h1>
@@ -100,7 +100,7 @@ function page() {
         <h1 className="text-3xl text-white font-bold my-14 ml-5">
           {responsedata && responsedata.lengths}
         </h1>
-        <div className="py-5 px-6 bg-white rounded-2xl ">
+        <div className="py-5 px-6 max-sm:px-0 bg-white rounded-2xl ">
           <div className="grid md:grid-cols-3 grid-cols-2 gap-4 ">
             <UserDashBoardProgressCard
               title={"Total Complaints"}
@@ -119,7 +119,7 @@ function page() {
             ></UserDashBoardProgressCard>
           </div>
 
-          <div className="w-full bg-[#e5edf6] mt-9 rounded-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-12 px-8  md:px-12 lg:px-6 xl:px-12 place-items-center ">
+          <div className="w-full bg-[#e5edf6] mt-9 rounded-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-12 px-0  md:px-4 lg:px-0 xl:px-12 place-items-center ">
             {responsedata &&
               responsedata.map((each) => {
                 return (

@@ -35,7 +35,7 @@ function page() {
 
   return (
     <div>
-      <div className="w-10/12 bg-white self-center  rounded-2xl mx-auto my-20">
+      <div className="max-sm:w-full w-10/12 bg-white self-center  rounded-2xl mx-auto my-20">
         <div className=" bg-[#01356A] py-10 px-12 w-full rounded-t-2xl  ">
           <h1 className=" text-white text-xl md:text-2xl font-semibold pb-2">
             {catogoryData[SelectedcatogoryName].title}
