@@ -13,7 +13,7 @@ import { capitalize } from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
-function MainFormHeadder({ scrole }) {
+function MainFormHeadder({ scrole, scrollToAboutSection }) {
   const [mobileMenu, setmobileMenu] = useState(false);
   const [mobileCatogoris, setmobileCatogoris] = useState(false);
   const [userimage, setuserimage] = useState();
@@ -47,7 +47,14 @@ function MainFormHeadder({ scrole }) {
             {" "}
             <h1>Home</h1>
           </Link>
-          <h1 className="cursor-pointer">About</h1>
+          <h1
+            onClick={async () => {
+              await router.push("/?scrollTo=about");
+            }}
+            className="cursor-pointer"
+          >
+            About
+          </h1>
           <div className=" relative group">
             <h1 className=" cursor-pointer">Catogoris</h1>
             <div className="absolute  pb-5 w-xs right-1/2 translate-x-1/2 font-normal   hidden group-hover:block hover:block ">
@@ -98,8 +105,8 @@ function MainFormHeadder({ scrole }) {
           {session && (
             <h1
               className="cursor-pointer"
-              onClick={() => {
-                scrole();
+              onClick={async () => {
+                await router.push("/?scrollTo=complains");
               }}
             >
               Complains
@@ -187,7 +194,17 @@ function MainFormHeadder({ scrole }) {
         } `}
       >
         <h1 className="hover:bg-blue-400 w-full text-center  py-2.5 ">Home</h1>
-        <h1 className="hover:bg-blue-400 w-full text-center  py-2.5 ">About</h1>
+
+        <h1
+          onClick={() => {
+            setmobileMenu(false);
+            scrollToAboutSection();
+          }}
+          className="hover:bg-blue-400 w-full text-center  py-2.5 "
+        >
+          About
+        </h1>
+
         <h1
           className="hover:bg-blue-400 w-full text-center  py-2.5 "
           onClick={() => {
@@ -197,29 +214,33 @@ function MainFormHeadder({ scrole }) {
         >
           Catogoris
         </h1>
+
         <h1
           className="hover:bg-blue-400 w-full text-center  py-2.5 "
           onClick={() => {
+            setmobileMenu(false);
             scrole();
           }}
         >
           Complains
         </h1>
 
-        <h1
-          className=" hover:bg-blue-400 w-full text-center  py-2.5"
-          onClick={() => {
-            status === "authenticated" &&
-              session?.user?.role === "user" &&
-              router.push("/user_dashboard");
+        {session && (
+          <h1
+            className=" hover:bg-blue-400 w-full text-center  py-2.5"
+            onClick={() => {
+              status === "authenticated" &&
+                session?.user?.role === "user" &&
+                router.push("/user_dashboard");
 
-            status === "authenticated" &&
-              session?.user?.role === "admin" &&
-              router.push("/admin_dashboard");
-          }}
-        >
-          Dash Board
-        </h1>
+              status === "authenticated" &&
+                session?.user?.role === "admin" &&
+                router.push("/admin_dashboard");
+            }}
+          >
+            Dash Board
+          </h1>
+        )}
       </div>
 
       <div

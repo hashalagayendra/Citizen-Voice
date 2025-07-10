@@ -1,6 +1,6 @@
 "use client";
 import { useSession } from "next-auth/react";
-
+import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/navigation";
 import React, { useState, useRef, useEffect } from "react";
 import { database } from "@/lib/firebaseConfig";
@@ -16,13 +16,27 @@ import {
   getDatabase,
   onValue,
 } from "firebase/database";
+import axios from "axios";
+
+import { el } from "date-fns/locale";
 
 export default function Chat() {
+  const [ai_loading, setAi_loading] = useState(false);
+  const [Ai_response, setAi_response] = useState("");
   const [activeTab, setActiveTab] = useState("admin"); // "admin" or "ai"
   const [adminMessages, setAdminMessages] = useState([]);
   const [aiMessages, setAiMessages] = useState([]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
+
+  const ai_Prompt = `
+You are a helpful assistant who helps users with their queries related to public grievances and laws in Sri lanka. 
+You provide accurate and concise information based on the user's input. 
+You do not provide any personal opinions or advice. 
+Your responses should be clear, informative, and relevant to the user's question. 
+
+The user's question is: "${input}"
+`;
   //   const database = getDatabase();
   const router = useRouter();
 
@@ -47,18 +61,47 @@ export default function Chat() {
   // Usage:
 
   // Simulate AI bot reply
-  //   const handleAiSend = () => {
-  //     if (input.trim() === "") return;
-  //     const userMsg = { sender: "You", text: input };
-  //     setAiMessages((prev) => [...prev, userMsg]);
-  //     setInput("");
-  //     setTimeout(() => {
-  //       setAiMessages((prev) => [
-  //         ...prev,
-  //         { sender: "AI Bot", text: "This is a sample AI response." },
-  //       ]);
-  //     }, 700);
-  //   };
+  const handleAiSend = async () => {
+    if (input.trim() === "") return;
+
+    const userMsg = { sender: "You", text: input };
+    setAiMessages((prev) => [...prev, userMsg]);
+    setInput("");
+
+    // Show "Thinking..." message immediately
+    setAiMessages((prev) => [
+      ...prev,
+      { sender: "AI Bot", text: "Thinking..." },
+    ]);
+
+    try {
+      const response = await axios.post("/api/aichat", {
+        data: { prompt: ai_Prompt },
+      });
+
+      const aiReply = response.data.data;
+
+      // Remove the "Thinking..." message and add real response
+      setAiMessages((prev) => {
+        const updated = [...prev];
+        updated.pop(); // remove "Thinking..." message
+        return [...updated, { sender: "AI Bot", text: aiReply }];
+      });
+    } catch (error) {
+      console.error("Failed to send AI message:", error);
+
+      // Remove the "Thinking..." message and add real response
+      setAiMessages((prev) => {
+        const updated = [...prev];
+        updated.pop(); // remove "Thinking..." message
+        return [
+          ...updated,
+          { sender: "AI Bot", text: "Sorry, I couldn't process your request." },
+        ];
+      });
+    } finally {
+    }
+  };
 
   //   const handleAdminSend = () => {
   //     if (input.trim() === "") return;
@@ -206,15 +249,16 @@ export default function Chat() {
                   ${
                     msg.sender === "You"
                       ? "bg-[#01356A] text-white rounded-br-none"
-                      : msg.sender === "AI Bot" || msg.sender === "admin"
-                      ? "bg-green-200 text-green-900 rounded-bl-none"
+                      : msg.sender === "AI Bot" || msg.sender === "Admin"
+                      ? "ring-2 ring-[#01356A] text-[#01356A] rounded-bl-none"
                       : "bg-gray-200 text-gray-800 rounded-bl-none"
                   }`}
               >
                 <span className="block text-xs font-semibold mb-1 opacity-70">
                   {msg.sender}
                 </span>
-                <span className="break-words">{msg.text}</span>
+
+                <span className="break-words"> {msg.text}</span>
               </div>
             </div>
           ))
@@ -238,7 +282,11 @@ export default function Chat() {
         <button
           // onClick={handleSend}
           onClick={() => {
-            addMessageByEmail();
+            if (activeTab === "admin") {
+              addMessageByEmail();
+            } else {
+              handleAiSend();
+            }
           }}
           className="px-6 py-2 bg-[#01356A] text-white rounded-full hover:bg-blue-700 transition font-semibold shadow"
         >
