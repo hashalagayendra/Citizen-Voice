@@ -77,11 +77,9 @@ const ComplainCard = ({ data }) => {
         </div>
       )}
       {/* Description */}
+
       {data.description && (
-        <div
-          className="text-gray-700 text-sm truncate"
-          title={data.description}
-        >
+        <div className="text-gray-700 text-sm max-w-lg mb-3 ">
           {data.description}
         </div>
       )}
@@ -99,7 +97,17 @@ const ComplainCard = ({ data }) => {
         />
         <InfoRow label="Severity" value={data.Severity_Level || "-"} />
         <InfoRow label="Submission" value={data.Submission_Method || "-"} />
-        <InfoRow label="Temp. Address" value={data.tempory_address || "-"} />
+
+        <div>
+          <div className="text-gray-700 text-xs font-semibold max-w-lg ">
+            Location
+          </div>
+
+          <div className="text-gray-700 text-xs max-w-lg ">
+            {data?.tempory_address && data.tempory_address}
+          </div>
+        </div>
+
         <InfoRow
           label="Location"
           value={

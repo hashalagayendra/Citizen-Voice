@@ -93,7 +93,7 @@ function UserDashBoardCompainCard({
           >
             Close
           </div>
-          <div className="w-full">
+          <div className="w-full h-full  overflow-y-scroll">
             <div className="mb-4">
               <h2 className="font-bold text-lg mb-1 text-[#01356A]">Title</h2>
               <p className="text-left text-gray-700 break-words">{SubTitle}</p>

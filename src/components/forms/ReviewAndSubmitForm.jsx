@@ -111,7 +111,9 @@ function ReviewAndSubmitForm() {
             <h1 className=" text-gray-600 text-xl max-md:text-base">
               Description
             </h1>
-            <h1 className="text-gray-800 max-md:text-sm ">{description}</h1>
+            <h1 className="text-gray-800 max-md:text-sm max-w-xl ">
+              {description}
+            </h1>
           </div>
           <div className="flex hover:bg-blue-100/30 py-2 flex-col items-center rounded">
             <h1 className=" text-gray-600 text-xl max-md:text-base">
