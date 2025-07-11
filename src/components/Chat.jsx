@@ -138,7 +138,7 @@ The user's question is: "${input}"
         console.log("🔄 Database changed:");
         console.log(user.messages);
         setAdminMessages(user.messages || []);
-        console.log("User ID:", "hasalagayendra360@gmail.com");
+        // console.log("User ID:", "hasalagayendra360@gmail.com");
       }
     });
     console.log("Page component mounted");
@@ -287,6 +287,8 @@ The user's question is: "${input}"
             } else {
               handleAiSend();
             }
+
+            console.log("current tab:", activeTab);
           }}
           className="px-6 py-2 bg-[#01356A] text-white rounded-full hover:bg-blue-700 transition font-semibold shadow"
         >

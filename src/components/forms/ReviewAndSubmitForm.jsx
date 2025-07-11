@@ -9,6 +9,7 @@ import { useSession } from "next-auth/react";
 function ReviewAndSubmitForm() {
   const [uploadLoarding, setuploadLoarding] = useState(false);
   const { data: session, status } = useSession();
+
   if (status === "loading") return <p>Loading...</p>;
   if (status === "unauthenticated") {
     router.push("/login");
@@ -68,7 +69,7 @@ function ReviewAndSubmitForm() {
       const res = await axios.post("/api/uploadData", formdetails);
       // console.log("Response data:", res.data);
       await setresponseAftersendingData(res.data);
-      // console.log("Form details:", formdetails);
+      console.log("newwww response:", res.data);
     } catch (error) {
       console.error("Error uploading data:", error);
     }

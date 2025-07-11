@@ -28,11 +28,14 @@ export default function layout({ children }) {
           <div className="  max-w-sm ">
             <div className=" flex items-center gap-3   mb-5">
               <img src={logo.src} alt="" className="w-[42px] h-[42px] " />
-              <h1 className="text-white font-bold">Public Grievance Portal</h1>
+              <h1 className="text-white font-bold">Citizen Voice</h1>
             </div>
             <p>
-              Working together for a cleaner, healthier environment for present
-              and future generations.
+              Citizen Voice is a platform designed to empower citizens by
+              providing a direct channel to report public concerns and ensure
+              every voice is heard. It aims to facilitate communication between
+              citizens and authorities, promoting transparency and
+              accountability in governance.
             </p>
           </div>
           {/* <div className=" max-w-sm">

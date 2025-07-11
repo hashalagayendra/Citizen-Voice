@@ -84,18 +84,16 @@ function page() {
       <MainFormHeadder></MainFormHeadder>
 
       <div className="h-full mt-16 py-7 px-12 max-md:px-0 ">
-        <div className="w-full ">
-          {" "}
+        <div className="flex justify-between items-center">
           <h1 className="text-3xl font-semibold text-white">DashBoard</h1>
+          <button
+            onClick={() => signOut()}
+            className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-5 rounded-md shadow-md transition-colors duration-300"
+          >
+            Logout
+          </button>
         </div>
-        <div
-          onClick={signOut}
-          className="cursor-pointer py-2 px-5 rounded-md text-white font-semibold bg-red-500 absolute top-17
-         right-8"
-        >
-          {" "}
-          Logout
-        </div>
+
         <h1>{responsedata?.MainTitle}</h1>
         <h1 className="text-3xl text-white font-bold my-14 ml-5">
           {responsedata && responsedata.lengths}
@@ -119,11 +117,18 @@ function page() {
             ></UserDashBoardProgressCard>
           </div>
 
-          <div className="w-full bg-[#e5edf6] mt-9 rounded-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-12 px-0  md:px-4 lg:px-0 xl:px-12 place-items-center ">
+          <div
+            className="w-full bg-[#e5edf6] mt-9 rounded-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-12 px-0 h-full
+            md:px-4 lg:px-0 xl:px-12 sm:place-items-start place-items-center "
+          >
             {responsedata &&
               responsedata.map((each) => {
                 return (
                   <UserDashBoardCompainCard
+                    description={each.description}
+                    complainId={each.complainId}
+                    createdAt={each.createdAt}
+                    C_status={each.C_status}
                     MainTitle={each.MainTitle}
                     SubTitle={each.SubTitle}
                     Location={each.tempory_address}

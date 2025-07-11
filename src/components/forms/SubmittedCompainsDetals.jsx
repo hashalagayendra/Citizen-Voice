@@ -17,16 +17,49 @@ function SubmittedCompainsDetals() {
   const main = params.catogory;
   const sub = params.sub;
 
+  function createSpecialId(MainTitle, SubTitle, CompainID) {
+    // Extract capital letters from MainTitle
+    const mainInitials = MainTitle.split("_")
+      .map((word) => word.charAt(0).toUpperCase())
+      .join("");
+
+    // Extract capital letters from SubTitle
+    const subInitials = SubTitle.replace(/([A-Z])/g, " $1") // Split camelCase
+      .trim()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase())
+      .join("");
+
+    // Combine components
+    return `${mainInitials}_${subInitials}_${CompainID}`;
+  }
+
   // console.log(catogoryData[main]);
+
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
+  const formated_date = new Date(responseAftersendingData.data.createdAt);
 
   const dummyData = {
     complaintId: responseAftersendingData.data.complainId,
     date: responseAftersendingData.data.complainId
       ? responseAftersendingData.data.date
       : "sds",
+
+    description: responseAftersendingData.data.description,
+    createdAt: formated_date.toLocaleString("en-US", options),
     category: responseAftersendingData.data.MainTitle,
     subCategory: responseAftersendingData.data.SubTitle,
-    status: "Resolved",
+    status: responseAftersendingData.data.C_status,
+    specialID: createSpecialId(
+      responseAftersendingData.data.MainTitle,
+      responseAftersendingData.data.SubTitle,
+      responseAftersendingData.data.complainId
+    ),
   };
 
   useEffect(() => {
@@ -52,7 +85,7 @@ function SubmittedCompainsDetals() {
               Complaint ID
             </h1>
             <h1 className="text-center text-xl text-[#01356A] font-semibold  max-sm:text-base">
-              EPA-743185
+              {dummyData.specialID}
             </h1>
           </div>
           <div>
@@ -60,7 +93,7 @@ function SubmittedCompainsDetals() {
               Submission Date
             </h1>
             <h1 className="text-center text-gray-400 text-lg max-sm:text-base">
-              5/8/2025
+              {dummyData.createdAt}
             </h1>
           </div>
 
@@ -69,7 +102,7 @@ function SubmittedCompainsDetals() {
               Status
             </h1>
             <h1 className="text-center text-green-500 text-lg max-sm:text-base">
-              Resived
+              {dummyData.status}
             </h1>
           </div>
         </div>

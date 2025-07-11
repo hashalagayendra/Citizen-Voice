@@ -70,10 +70,10 @@ const ComplaintReceiptPDF = ({ data }) => (
         </Text>
 
         <Text style={styles.label}>Complaint ID</Text>
-        <Text style={styles.value}>{data.complaintId}</Text>
+        <Text style={styles.value}>{data.specialID}</Text>
 
         <Text style={styles.label}>Submission Date</Text>
-        <Text style={styles.value}>{data.date}</Text>
+        <Text style={styles.value}>{data.createdAt}</Text>
 
         <Text style={styles.label}>Complaint Category</Text>
         <Text style={styles.value}>{data.category}</Text>

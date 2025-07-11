@@ -98,16 +98,17 @@ function page() {
   return (
     <div className=" bg-[#01356A]">
       <MainFormHeadder></MainFormHeadder>
-      <div className="   min-h-dvh pt-28 px-12 md:px-0 lg:px-12 bg-[#01356A]">
-        <h1 className="text-3xl font-semibold text-white">DashBoard</h1>
-        <div
-          onClick={signOut}
-          className="cursor-pointer py-2 px-5 rounded-md text-white font-semibold bg-red-500 absolute top-17
-                 right-8"
-        >
-          {" "}
-          Logout
+      <div className="   min-h-dvh pt-28 px-12 md:px-0 lg:px-12 bg-[#01356A] relative">
+        <div className="flex justify-between items-center">
+          <h1 className="text-3xl font-semibold text-white">DashBoard</h1>
+          <button
+            onClick={() => signOut()}
+            className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-5 rounded-md shadow-md transition-colors duration-300"
+          >
+            Logout
+          </button>
         </div>
+
         <div className="w-full gap-10 flex mt-8  rounded-3xl shadow-2xl  mb-4">
           <div
             onClick={() => {

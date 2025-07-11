@@ -76,7 +76,7 @@ function AdminChat() {
         <div className="w-3/4 flex flex-col h-full">
           <div className="flex-shrink-0 border-b border-[#01356A]/30 px-8 py-4 bg-white rounded-tr-3xl">
             <h2 className="text-[#01356A] text-2xl font-semibold text-center">
-              Chat with Admin
+              Chat with Users
             </h2>
           </div>
           <div className="flex-1 overflow-y-auto px-8 py-6 flex flex-col gap-3 bg-gradient-to-br from-white to-[#e6ecf7]">
@@ -86,6 +86,7 @@ function AdminChat() {
                   No messages yet.
                 </div>
               ) : (
+                messages &&
                 messages.map((msg, idx) => (
                   <div
                     key={idx}
