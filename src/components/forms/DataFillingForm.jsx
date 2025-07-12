@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import useGlobalStore from "@/store/useGlobalStore";
 import { useState } from "react";
 import { useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 import DiscrptionInput from "@/components/inputs/DiscrptionInput";
 import MapSelection from "@/components/inputs/MapSelection";
@@ -32,6 +33,7 @@ function DataFillingForm() {
 
   const { uplodedFiles, setuplodedFiles } = useGlobalStore();
   const { uploadedImageUrls, setuploadedImageUrls } = useGlobalStore();
+  const { description } = useGlobalStore();
 
   const [uploadLoarding, setuploadLoarding] = useState(false);
 
@@ -53,12 +55,12 @@ function DataFillingForm() {
 
         const data = await res.json();
         if (data?.url) {
-          urls.push(data.url); // ✅ just collect
+          urls.push(data.url); //
         }
       }
 
-      // ✅ One update after all are done
-      setuploadedImageUrls([...urls]); // ✅ show all at once
+      // One update after all are done
+      setuploadedImageUrls([...urls]); // t once
     } catch (e) {
       console.log("error image upload");
     }
@@ -70,6 +72,7 @@ function DataFillingForm() {
   }, [uplodedFiles, uploadedImageUrls]);
   return (
     <div>
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="bg-white w-full px-12 max-sm:px-4 rounded-b-2xl py-6">
         <h1 className="text-xl md:text-2xl text-[#01356A] mb-6 ">
           Provide details about the issue
@@ -102,7 +105,7 @@ function DataFillingForm() {
           <Link href={"./"}>
             <Button
               className={
-                "ring-[#01356A] ring-2 text-[#01356A] md:text-base text-sm"
+                "ring-[#01356A] ring-2 text-[#01356A] md:text-base text-sm cursor-pointer"
               }
               variant={"outline"}
             >
@@ -111,12 +114,16 @@ function DataFillingForm() {
           </Link>
 
           <Button
-            className={"md:text-base text-sm"}
+            className={"md:text-base text-sm cursor-pointer"}
             onClick={async () => {
-              setuploadLoarding(true);
-              await uploadImagesToCloudinary();
-              await setPageCount(pageCount + 1);
-              setuploadLoarding(false);
+              if (description) {
+                setuploadLoarding(true);
+                await uploadImagesToCloudinary();
+                await setPageCount(pageCount + 1);
+                setuploadLoarding(false);
+              } else {
+                toast.error("No Description");
+              }
             }}
           >
             {uploadLoarding ? "Wait..." : "Continue"}

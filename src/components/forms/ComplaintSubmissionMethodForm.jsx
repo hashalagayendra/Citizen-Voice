@@ -23,7 +23,7 @@ function ComplaintSubmissionMethodForm() {
 
       <div className="flex flex-col md:flex-row justify-around gap-10 md:gap-0 lg:justify-center lg:gap-16">
         <div
-          className={`md:max-w-xs w-full  flex flex-col items-center justify-between rounded-lg py-4  md:py-10 mr-4 gap-5 ${
+          className={`cursor-pointer md:max-w-xs w-full  flex flex-col items-center justify-between rounded-lg py-4  md:py-10 mr-4 gap-5 ${
             Submission_Method === "with_id"
               ? "bg-blue-100/60 ring-2 ring-blue-700"
               : "bg-blue-100/40"
@@ -46,7 +46,7 @@ function ComplaintSubmissionMethodForm() {
         </div>
 
         <div
-          className={`md:max-w-xs w-full flex flex-col items-center justify-between rounded-lg py-4  md:py-10 gap-5 ${
+          className={`cursor-pointer md:max-w-xs w-full flex flex-col items-center justify-between rounded-lg py-4  md:py-10 gap-5 ${
             Submission_Method === "without_id"
               ? "bg-blue-100/60 ring-2 ring-blue-700"
               : "bg-blue-100/40"
@@ -71,13 +71,18 @@ function ComplaintSubmissionMethodForm() {
       </div>
       <div className="w-full flex justify-between md:px-12 mt-20">
         <Button
-          className={"ring-[#01356A] ring-2 text-[#01356A]"}
+          className={"ring-[#01356A] ring-2 text-[#01356A] cursor-pointer"}
           variant={"outline"}
           onClick={() => setPageCount(pageCount - 1)}
         >
           Previous
         </Button>
-        <Button onClick={() => setPageCount(pageCount + 1)}>Continue</Button>
+        <Button
+          className={"cursor-pointer"}
+          onClick={() => setPageCount(pageCount + 1)}
+        >
+          Continue
+        </Button>
       </div>
     </div>
   );

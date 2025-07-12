@@ -156,13 +156,16 @@ function ReviewAndSubmitForm() {
 
       <div className="w-full flex justify-between md:px-12 mt-20">
         <Button
-          className={"ring-[#01356A] ring-2 text-[#01356A]"}
+          className={
+            "ring-[#01356A] ring-2 text-[#01356A]cursor-pointer cursor-pointer "
+          }
           variant={"outline"}
           onClick={() => setPageCount(pageCount - 1)}
         >
           Previous
         </Button>
         <Button
+          className={"cursor-pointer"}
           onClick={async () => {
             setuploadLoarding(true);
             await uploaddata();

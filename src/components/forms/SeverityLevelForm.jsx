@@ -16,7 +16,7 @@ function SeverityLevelForm() {
       </h1>
       <p className=" mt-4 mb-1 ">Severity Level</p>
 
-      <div className=" flex flex-col gap-6">
+      <div className="cursor-pointer flex flex-col gap-6">
         <div className="  rounded-md ring-1 ring-gray-300">
           <label className="w-ful h-full px-10 flex  py-6 justify-between">
             <h1 className="font-semibold md:text-base text-sm ">Low</h1>
@@ -32,7 +32,7 @@ function SeverityLevelForm() {
           </label>
         </div>
 
-        <div className="  rounded-md ring-1 ring-gray-300">
+        <div className=" cursor-pointer rounded-md ring-1 ring-gray-300">
           <label className="w-ful h-full px-10 flex  py-6 justify-between">
             <h1 className="font-semibold md:text-base text-sm">Medium</h1>
             <h1 className="hidden md:flex">Moderate impact, needs attention</h1>
@@ -47,7 +47,7 @@ function SeverityLevelForm() {
           </label>
         </div>
 
-        <div className="  rounded-md ring-1 ring-gray-300">
+        <div className=" cursor-pointer rounded-md ring-1 ring-gray-300">
           <label className="w-ful h-full px-10 flex  py-6 justify-between">
             <h1 className="font-semibold md:text-base text-sm ">High</h1>
             <h1 className="hidden md:flex">Significant impact, urgent</h1>
@@ -62,7 +62,7 @@ function SeverityLevelForm() {
           </label>
         </div>
 
-        <div className="  rounded-md ring-1 ring-gray-300">
+        <div className="cursor-pointerrounded-md ring-1 ring-gray-300">
           <label className="w-ful h-full px-10 flex  py-6 justify-between">
             <h1 className="font-semibold  md:text-base text-sm">Critical</h1>
             <h1 className="hidden md:flex">
@@ -81,13 +81,18 @@ function SeverityLevelForm() {
       </div>
       <div className="w-full flex justify-between md:px-12 mt-20">
         <Button
-          className={"ring-[#01356A] ring-2 text-[#01356A]"}
+          className={"ring-[#01356A] ring-2 text-[#01356A] cursor-pointer"}
           variant={"outline"}
           onClick={() => setPageCount(pageCount - 1)}
         >
           Previous
         </Button>
-        <Button onClick={() => setPageCount(pageCount + 1)}>Continue</Button>
+        <Button
+          className={"cursor-pointer"}
+          onClick={() => setPageCount(pageCount + 1)}
+        >
+          Continue
+        </Button>
       </div>
     </div>
   );

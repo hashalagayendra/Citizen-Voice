@@ -58,7 +58,7 @@ function MapSelection() {
         />
 
         <div
-          className="bg-[#01356A] gap-4 w-full flex md:w-60 md:py-0 py-2 items-center justify-center rounded px-2"
+          className="bg-[#01356A] gap-4 w-full flex md:w-60 md:py-0 py-2 items-center justify-center rounded px-2 cursor-pointer"
           onClick={() => {
             setOpen((pre) => !pre);
           }}
