@@ -3,20 +3,44 @@ import React from "react";
 import ChatHaddler from "@/components/ChatHaddler";
 import MainFormHeadder from "@/components/MainFormHeadder";
 import AdminChat from "@/components/AdminChat";
-import AdminDashboardCardDemo from "@/components/AdminDashboardCardDemo";
 import axios from "axios";
 import ComplainCard from "@/components/ComplainCard";
-import AdminDashboardCard from "@/components/ComplainCard";
 import { useState } from "react";
 import catogoryData from "@/lib/details";
-import { use } from "react";
 import { useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
+const ComplainSummaryCard = ({ data, onClick, statusColors }) => (
+  <div
+    onClick={onClick}
+    className="cursor-pointer p-4 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-200"
+  >
+    <div className="flex justify-between items-start gap-4">
+      <h3 className="font-bold text-lg text-[#01356A] truncate pr-2">
+        {data.MainTitle || "No Title"}
+      </h3>
+      <span
+        className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap ${
+          statusColors[data.C_status] || "bg-gray-200 text-gray-700"
+        }`}
+      >
+        {data.C_status || "Unknown"}
+      </span>
+    </div>
+    <div className="mt-2 text-sm text-gray-500 flex justify-between items-center">
+      <p className="truncate pr-4">{data.SubTitle || "No Sub-title"}</p>
+      <p className="flex-shrink-0">
+        {new Date(data.createdAt).toLocaleDateString()}
+      </p>
+    </div>
+  </div>
+);
+
 function page() {
   const router = useRouter();
   const { data: session, status } = useSession();
+  const [selectedComplain, setSelectedComplain] = useState(null);
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -73,6 +97,17 @@ function page() {
       console.error("Error fetching data:", e);
     }
   }
+
+  const statusColors = {
+    Received: "bg-blue-100 text-blue-700",
+    "Under Review": "bg-orange-100 text-orange-700",
+    Assigned: "bg-purple-100 text-purple-700",
+    "In Progress": "bg-cyan-100 text-cyan-700",
+    Resolved: "bg-green-100 text-green-700",
+    Closed: "bg-gray-100 text-gray-700",
+    Rejected: "bg-red-100 text-red-700",
+    Pending: "bg-yellow-100 text-yellow-700",
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -310,16 +345,39 @@ function page() {
 
               <hr className="w-full h-.5 my-4 bg-[#01356A]" />
 
-              <div className="w-full flex flex-col gap-5 mt-6 px-5">
-                {ComplainCardDetails.length > 0 &&
+              <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6 px-5 pb-6">
+                {ComplainCardDetails.length > 0 ? (
                   ComplainCardDetails.map((data, index) => (
-                    <AdminDashboardCard key={index} data={data} />
-                  ))}
+                    <ComplainSummaryCard
+                      key={index}
+                      data={data}
+                      statusColors={statusColors}
+                      onClick={() => setSelectedComplain(data)}
+                    />
+                  ))
+                ) : (
+                  <p className="text-center text-gray-500 col-span-full">
+                    No complaints found.
+                  </p>
+                )}
               </div>
             </>
           )}
         </div>
       </div>
+      {selectedComplain && (
+        <div
+          className="fixed inset-0 bg-black/60 z-50 flex justify-center items-center p-4"
+          onClick={() => setSelectedComplain(null)}
+        >
+          <div
+            className="w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ComplainCard data={selectedComplain} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
