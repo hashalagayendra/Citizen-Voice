@@ -30,7 +30,7 @@
     "firebase": "^11.9.1",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.511.0",
-    "next": "^15.3.5",
+    "next": "^15.3.6",
     "next-auth": "^4.24.11",
     "next-cloudinary": "^6.16.0",
     "react": "^19.0.0",
